@@ -12,11 +12,11 @@
             <div class="auth-content">
                 <div class="form-group">
                     <label for="">Username</label>
-                    <input class="form-control" placeholder="Enter username" name="username" type="text" value="Admin">
+                    <input class="form-control" placeholder="Enter username" name="username" type="text" value="admin@lfyteam.com">
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
-                    <input class="form-control" placeholder="Enter password" name="password" type="password" value="123456">
+                    <input class="form-control" placeholder="Enter password" name="password" type="password" value="admin@lfyteam.com">
                     <div class="validation-message" data-field="password"></div>
                 </div>
             </div>

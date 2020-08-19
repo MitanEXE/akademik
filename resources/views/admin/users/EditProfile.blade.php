@@ -1,8 +1,8 @@
-@extends('admin/layouts/default')
+@extends('layouts.app')
 
 {{-- Page title --}}
 @section('title')
-    Edit User
+    Edit Profile
     @parent
 @stop
 
@@ -21,12 +21,23 @@
 @section('content')
 
     <section class="content-header">
-        <!--section starts-->
-        <h1>Edit User</h1>
-    </section>
+    <ol class="breadcrumb">
+       <div class="breadcrumb">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
+</div>
+
+    </ol>
+</section>
     <!--section ends-->
-    <section class="content">
-        <!--main content-->
+           <section class="datagrid-panel">
+    <div class="content">
+        <div class="panel">
+            <div class="content-header no-mg-top">
+                <i class="fa fa-newspaper-o"></i>
+                <div class="content-header-title">@yield('title')</div>
+            </div>
+                <br>
         <div class="row">
             <div class="panel panel-info">
                     <div class="panel-heading">
@@ -47,17 +58,18 @@
                               {{ csrf_field() }}
 
                             <input type="text" hidden value="editprofile" name="tipeform"> </input>
-
-                            <div class="row">
-                                <div class="col-xs-12">
+</div>  
+<br>
+                      
+                             
+                            </div>
+                               <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="txtName" class="control-label">Nama</label>
-
                                         <input type="text" name="inama" id="inama" class="form-control input-md"
                                                value='{{ $user->name }}' >
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtEmail" class="control-label">Email</label>
@@ -81,7 +93,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtDate" class="control-label">Tanggal Lahir</label>
                                     <input type="date" name="itanggallahir" id="itanggallahir" class="form-control input-md"
@@ -142,11 +154,12 @@
                             @endif
         
                             <div class="col-md-12 mar-10">
-                                <div class="col-xs-6 col-md-6">
+                                <div class="col-xs-12 col-md-12">
                                     <input type="submit" name="btnSubmit" id="btnSubmit" value="Simpan"
                                            class="btn btn-primary btn-block btn-md btn-responsive">
                                 </div>
-                                <div class="col-xs-6 col-md-6">
+                                <br>
+                                <div class="col-xs-12 col-md-12">
                                     <input type="reset" value="Batal"
                                            class="btn btn-success btn-block btn-md btn-responsive">
                                 </div>
