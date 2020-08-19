@@ -50,9 +50,12 @@
                     <i class="fa fa-map-marker"></i>
                     <div class="clear">
                         <div class="card-title">
-                            <span class="timer" data-from="0" data-to="24">24</span>m
+                            @php
+                            $kelas = DB::table('kelas')->count();
+                            @endphp
+                            <span class="timer" data-from="0" data-to="{{ $kelas }}">{{ $kelas }}</span> 
                         </div>
-                        <div class="card-subtitle">LOCATION</div>
+                        <div class="card-subtitle">CLASS</div>
                     </div>
                 </div>
                 <div class="card-menu">
@@ -69,10 +72,10 @@
                     <i class="fa fa-suitcase"></i>
                     <div class="clear">
                         <div class="card-title">
-                            0<span class="timer" data-from="0" data-to="8">08</span>:
-                            <span class="timer" data-from="0" data-to="20">20</span>
+                            <span class="timer" data-from="0" data-to="{{ date('h') }}"></span>:
+                            <span class="timer" data-from="0" data-to="{{ date('i') }}"></span>
                         </div>
-                        <div class="card-subtitle">MEETING</div>
+                        <div class="card-subtitle">CLOCK</div>
                     </div>
                 </div>
                 <div class="card-menu">

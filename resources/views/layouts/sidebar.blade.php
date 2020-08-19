@@ -17,7 +17,56 @@
                     </a>
                     <ul>
                         <!-- Print submenu -->
-                        <li><a href="">Edit User</a></li>
+                        <li><a href="{{ route('users') }}">List User</a></li>
+                        <!-- End of Print submenu -->
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="">
+                        <i class="fa fa-user">
+                            <!-- fa fa-icon --></i>
+                        <span>Siswa</span>
+                    </a>
+                    <ul>
+                        <!-- Print submenu -->
+                        <li><a href="{{ route('listsiswa') }}">List Siswa</a></li>
+                        <!-- End of Print submenu -->
+                    </ul>
+                </li>
+                 <li class="">
+                    <a href="">
+                        <i class="fa fa-book">
+                            <!-- fa fa-icon --></i>
+                        <span>Mapel</span>
+                    </a>
+                    <ul>
+                        <!-- Print submenu -->
+                        <li><a href="{{ URL::to('akademik/mapel') }}">List Mapel</a></li>
+                        <!-- End of Print submenu -->
+                    </ul>
+                </li>
+
+                 <li class="">
+                    <a href="">
+                        <i class="fa fa-vcard">
+                            <!-- fa fa-icon --></i>
+                        <span>Kelas</span>
+                    </a>
+                    <ul>
+                        <!-- Print submenu -->
+                        <li><a href="{{ URL::to('akademik/kelas') }}">List Kelas</a></li>
+                        <!-- End of Print submenu -->
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="">
+                        <i class="fa fa-folder">
+                            <!-- fa fa-icon --></i>
+                        <span>Nilai</span>
+                    </a>
+                    <ul>
+                        <!-- Print submenu -->
+                        <li><a href="{{ URL::to('akademik/nilai') }}">List Nilai</a></li>
                         <!-- End of Print submenu -->
                     </ul>
                 </li>

@@ -3,7 +3,7 @@
         <div class="side-nav-mobile"><i class="fa fa-bars"></i></div>
         <div class="logo-wrapper">
             <div class="logo-box">
-                <img alt="pongo" src="{{ asset('images/logo.png')}}">
+                <img alt="pongo" src="{{ asset('images/sph.png')}}">
                 <a href="{{ route('home') }}">
                     <div class="logo-title">Academic</div>
                 </a>

@@ -330,10 +330,10 @@ class UserController extends Controller
         } catch (UserNotFoundException $e) {
             // Prepare the error message
             $error = 'User Tidak Ditemukan';
-            return View('admin.layouts.modal_confirm', compact('error', 'model', 'confirm_route'));
+            return View('admin.drisana.modal_confirm', compact('error', 'model', 'confirm_route'));
         }
         $confirm_route = route('finaldelete', ['id' => $user->id]);
-        return View('admin.layouts.modal_confirm', compact('error', 'model', 'confirm_route', 'user'));
+        return View('admin.drisana.modal_confirm', compact('error', 'model', 'confirm_route', 'user'));
    }
 
    public function destroy($id)
