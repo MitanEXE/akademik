@@ -5,7 +5,7 @@
         @csrf
         <div class="auth-header">
             <div class="auth-title">Academic</div>
-            <div class="auth-subtitle">Simple and Clean Admin Template</div>
+            <div class="auth-subtitle" style="color:red;">Sekolah Permata Harapan</div>
             <div class="auth-label">Login</div>
         </div>
         <div class="auth-body">

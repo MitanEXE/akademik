@@ -12,6 +12,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Redirect;
 use File;
 use Illuminate\Support\Facades\DB;
+use Notifiable, HasRoleAndPermission;
 
 
 

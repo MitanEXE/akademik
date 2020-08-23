@@ -39,6 +39,7 @@ Route::group(array('prefix' => 'akademik'), function () {
         Route::delete('delete/{userid}', 'UserController@destroy' )->name('finaldelete');
         Route::put('update/{iduser}', 'UserController@updateprofile')->name('updateprofile');
         Route::get('{userId}', array('as' => 'users.show', 'uses' => 'UserController@show'));
+        Route::get('{userId}', array('as' => 'users.show2', 'uses' => 'UserController@show'));
     });
 
 

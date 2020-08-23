@@ -3,7 +3,7 @@
         <div class="main-menu">
             <ul>
                 <li class="">
-                    <a href="">
+                    <a href="{{ route('home') }}">
                         <i class="fa fa-bars"></i>
                         <span>Dashboard</span>
                     </a>
@@ -13,60 +13,52 @@
                     <a href="">
                         <i class="fa fa-users">
                             <!-- fa fa-icon --></i>
-                        <span>Users</span>
+                        <span>Data Pengguna</span>
                     </a>
                     <ul>
+                        <li {!! (Request::is('home/users') || Request::is('home/users/create') || Request::is('home/users/*') || Request::is('home/deleted_users') ? 'class="active"' : '') !!}>
                         <!-- Print submenu -->
+                       
+                          <li><a href=""">Profile Saya</a></li>
                         <li><a href="{{ route('users') }}">List User</a></li>
+                         <li><a href="{{ URL::route('tambahuser') }}">Tambah User</a></li>
+                      
                         <!-- End of Print submenu -->
                     </ul>
                 </li>
                 <li class="">
-                    <a href="">
-                        <i class="fa fa-user">
-                            <!-- fa fa-icon --></i>
-                        <span>Siswa</span>
-                    </a>
-                    <ul>
-                        <!-- Print submenu -->
-                        <li><a href="{{ route('listsiswa') }}">List Siswa</a></li>
-                        <!-- End of Print submenu -->
-                    </ul>
-                </li>
-                 <li class="">
-                    <a href="">
-                        <i class="fa fa-book">
-                            <!-- fa fa-icon --></i>
-                        <span>Mapel</span>
-                    </a>
-                    <ul>
-                        <!-- Print submenu -->
-                        <li><a href="{{ URL::to('akademik/mapel') }}">List Mapel</a></li>
-                        <!-- End of Print submenu -->
-                    </ul>
-                </li>
-
-                 <li class="">
                     <a href="">
                         <i class="fa fa-vcard">
                             <!-- fa fa-icon --></i>
-                        <span>Kelas</span>
+                        <span>Data Siswa</span>
                     </a>
                     <ul>
                         <!-- Print submenu -->
-                        <li><a href="{{ URL::to('akademik/kelas') }}">List Kelas</a></li>
+                        <li><a href="{{ route('listsiswa') }}">Daftar Siswa</a></li>
+                        <li><a href="{{ URL::to('akademik/kelas') }}">Daftar Kelas</a></li>
+                    
+                        
                         <!-- End of Print submenu -->
                     </ul>
                 </li>
-                <li class="">
+                 <li class="">
                     <a href="">
                         <i class="fa fa-folder">
                             <!-- fa fa-icon --></i>
-                        <span>Nilai</span>
+                        <span>Data Nilai</span>
                     </a>
                     <ul>
                         <!-- Print submenu -->
-                        <li><a href="{{ URL::to('akademik/nilai') }}">List Nilai</a></li>
+                        <li><a href="{{ URL::to('akademik/mapel') }}">Mata Pelajaran</a></li>
+                        <li><a href="{{ URL::to('akademik/nilai') }}">Nilai Siswa</a></li>
+                <li {!! (Request::is('home/nilai/tambahnilaikelas') ? 'class="active" id="active"' : '') !!}>
+                    <li><a href="{{ route('tambahnilaikelas') }}">Tambah Nilai</a></li>
+                  
+            <li {!! (Request::is('home/nilai') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ route('lihatnilaisiswa') }}">
+                    Lihat Nilai
+                </a>
+            </li>
                         <!-- End of Print submenu -->
                     </ul>
                 </li>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.default')
 
 {{-- Page title --}}
 @section('title')
@@ -42,13 +42,15 @@
                         <div class="content-box-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-primary" onclick="main_routes('create', '')"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+                                    <button id="sample_editable_1_new"  class="btn btn-primary"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
                                 </div>
                                 <div class="col-md-6 form-inline justify-content-end">
                                     <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>
                                     <input class="form-control" id="search" placeholder="Search" type="text">
                                 </div>
                             </div>
+                            <br>
+                              <div id="sample_editable_1_wrapper" class="">
                         </div>
                                     <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                         <thead>
@@ -107,4 +109,5 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/js/pages/table_kelas.js') }}" ></script>
+    
 @stop

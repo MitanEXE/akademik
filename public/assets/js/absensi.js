@@ -2,7 +2,7 @@ function getkelas() {
   var ProgramKeahlian = document.getElementById("ProgramKeahlian").value;
   var pilihan = null;
   switch(ProgramKeahlian) {
-    case "Teknik Komputer dan Jaringan (TKJ)":
+    case "Rekayasa Perangkat Lunak (RPL)":
     pilihan = "1";
     break;
     case "Adaministrasi Perkantoran (AP)" : 

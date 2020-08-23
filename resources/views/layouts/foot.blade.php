@@ -1,3 +1,6 @@
+
+<script src="{{ asset('assets/js/app.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('plugins/jquery/jquery-2.1.1.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('plugins/jquery-count-to/jquery.countTo.js')}}"></script>
 <script type="text/javascript" src="{{ asset('plugins/moment/min/moment.min.js')}}"></script>

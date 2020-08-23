@@ -18,32 +18,33 @@ Data Nilai Anda
 
 {{-- Page content --}}
 @section('content')
-
 <section class="content-header">
-                <h1>Daftar Nilai Anda</h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="{{ route('dashboard') }}">
-                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="active">Data Nilai Anda</li>
-                </ol>
-            </section>
+    <ol class="breadcrumb">
+       <div class="breadcrumb">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
+</div>
+
+    </ol>
+</section>
             <!-- Main content -->
-            <section class="content">
-                <!-- Second Data Table -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                        <div class="portlet box default">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                    Data Nilai Anda
-                                </div>
-                            </div>
+            <section class="datagrid-panel">
+    <div class="content">
+        <div class="panel">
+            <div class="content-header no-mg-top">
+                <i class="fa fa-newspaper-o"></i>
+                <div class="content-header-title">@yield('title')</div>
+            </div>
+            <!--section ends-->
+            
+                <!-- row-->
+                @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+                @endif
+<br>
+
                             <div class="portlet-body">
                                 <div class="table-toolbar">
                                   

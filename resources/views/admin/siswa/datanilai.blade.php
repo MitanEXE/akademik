@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layouts.default')
 
 {{-- Page title --}}
 @section('title')
-    Mata Pelajaran
-    @parent
+Daftar Mata Pelajaran
+@parent
 @stop
 
 {{-- page level styles --}}
@@ -29,29 +29,46 @@
     </ol>
 </section>
             <!-- Main content -->
-            <section class="datagrid-panel">
+          
+                         <section class="datagrid-panel">
     <div class="content">
         <div class="panel">
             <div class="content-header no-mg-top">
                 <i class="fa fa-newspaper-o"></i>
                 <div class="content-header-title">@yield('title')</div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="content-box">
-                        <div class="content-box-header">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button class="btn btn-primary" onclick="main_routes('create', '')"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+            <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                       
+                            <div class="portlet-body">
+                                <div class="table-toolbar">
+                                    <div class="btn-group">
+                                     
+                                         <button id="sample_editable_1_new" class="btn btn-primary"><i class="fa fa-pencil" id="sample_editable_1_new"></i> Add New @yield('title')</button>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
+                                            Alat
+                                            <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li>
+                                                <a href="#">Cetak</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Save as PDF</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Export ke Excel</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 form-inline justify-content-end">
-                                    <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>
-                                    <input class="form-control" id="search" placeholder="Search" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        
-                           <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
+                                <br>
+                                <div id="sample_editable_1_wrapper" class="">
+                                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="">Kode Mata Pelajaran</th>
@@ -90,44 +107,28 @@
                                     
                                         </tbody>
                                     </table>
-                                    <div id="myselect">
+                                </div>
+                                <!-- END EXAMPLE TABLE PORTLET-->
+
+                                <div id="myselect">
                                     <select >
                                         <option  value=""></option>
                                     </select>
                                 </div>
+                            </div>
                         </div>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-<section class="form-panel"></section>
-
+                    </div>
+                </div>
+            </section>
             <!-- content -->
         
     @stop
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
-
-<script>
-$(document).ready(function() {
-    $('#table').DataTable();
-});
-</script>
-
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="user_delete_confirm_title" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-  </div>
-</div>
-<script>
-$(function () {
-    $('body').on('hidden.bs.modal', '.modal', function () {
-        $(this).removeData('bs.modal');
-    });
-});
-</script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pages/table_mapel.js') }}" ></script>
 @stop

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.default')
 
 {{-- Page title --}}
 @section('title')
@@ -43,7 +43,8 @@
                         <div class="content-box-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-primary" onclick="main_routes('create', '')"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+                                    <a href="{{ URL::to('akademik/siswa/add') }}">
+                                    <button class="btn btn-primary"><i class="fa fa-pencil"></i> Add New @yield('title')</button></a>
                                 </div>
                                 <div class="col-md-6 form-inline justify-content-end">
                                     <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>

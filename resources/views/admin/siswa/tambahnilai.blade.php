@@ -17,44 +17,38 @@ Pilih Kelas Siswa
 @section('content')
 
 <section class="content-header">
-                <!--section starts-->
-                <h1>Tambah Nilai</h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="{{ route('dashboard') }}">
-                            <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="active">Pilih Kelas</li>
-                </ol>
-            </section>
-            <section class="content">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-success" id="hidepanel6">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    <i class="livicon" data-name="share" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                </h3>
-                                <span class="pull-right">
-                                    <i class="glyphicon glyphicon-chevron-up clickable"></i>
-                                    <i class="glyphicon glyphicon-remove removepanel clickable"></i>
-                                </span>
-                            </div>
+    <ol class="breadcrumb">
+       <div class="breadcrumb">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
+</div>
+
+    </ol>
+</section>
+            <!-- Main content -->
+            <section class="datagrid-panel">
+    <div class="content">
+        <div class="panel">
+            <div class="content-header no-mg-top">
+                <i class="fa fa-newspaper-o"></i>
+                <div class="content-header-title">@yield('title')</div>
+            </div>
+              
                             <div class="panel-body">
                                 <div>Silakan Pilih Program Keahlian dan Kelas</div>
+                                <br>
                                 <form role="form" action="{{route ('goinputnilaikelas') }}" method="POST">
                                         {{ csrf_field() }} 
                                     <div class="form-group">
                                         <label>Program Keahlian</label>
                                         <select class="form-control" id="ProgramKeahlian" name="ProgramKeahlian" onchange="getkelas();">
                                             <option value="-1"></option>
-                                            <option >Teknik Komputer dan Jaringan (TKJ)</option>
-                                            <option >Adaministrasi Perkantoran (AP)</option>
-                                            <option >Akuntansi (AK)</option>
-                                            <option >Perbankan (PBK)</option>
-                                            <option >Perawatan Kesahatan (PRW)</option>
+                                            <option >Rekayasa Perangkat Lunak (RPL)</option>
+                                            <option >Accounting (ACC)</option>
+                                            <option >Marketing (MKT)</option>
+                                            <option >Sekolah Menengah Pertama (SMP)</option>
+                                            <option >Sekolah Dasar (SD)</option>
+                                          
                                         </select>
                                     </div>
 
@@ -69,7 +63,7 @@ Pilih Kelas Siswa
                                         <select class="form-control" id="mapel" name="mapel" >
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-responsive btn-default" role="button">Lanjutkan</button>
+                                    <button type="submit" class="btn btn-primary" role="button">Lanjutkan</button>
                                     <button type="reset" class="btn btn-responsive btn-default">Batal</button>
                                 </form>
                             </div>
@@ -88,19 +82,19 @@ Pilih Kelas Siswa
       var ProgramKeahlian = document.getElementById("ProgramKeahlian").value;
       var pilihan = null;
       switch(ProgramKeahlian) {
-        case "Teknik Komputer dan Jaringan (TKJ)":
+        case "Rekayasa Perangkat Lunak (RPL)":
         pilihan = "1";
         break;
-        case "Adaministrasi Perkantoran (AP)" : 
+        case "Accounting (ACC)" : 
         pilihan = "2";
         break;
-        case "Akuntansi (AK)" : 
+        case "Marketing (MKT)" : 
         pilihan = "3";
         break;
-        case "Perbankan (PBK)" : 
+        case "Sekolah Menengah Pertama (SMP)" : 
         pilihan = "4";
         break;
-        case "Perawatan Kesahatan (PRW)" : 
+        case "Sekolah Dasar (SD)" : 
         pilihan = "5";
         break;
       }

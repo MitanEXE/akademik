@@ -12,6 +12,8 @@ Use App\data_pengguna;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Notifiable, HasRoleAndPermission;
+
 
 class SiswaController extends Controller
 {
@@ -24,6 +26,7 @@ class SiswaController extends Controller
     public function index()
     {
         // Grab all the kelas
+
         $siswa = DB::table('users')
         					->leftjoin('rombel','rombel.user_id', '=', 'users.id')
         					->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
@@ -43,6 +46,7 @@ class SiswaController extends Controller
 
     public function addsiswa()
     {
+
         try {
             $iduser = Auth::id();
             $kelas = Kelas::All();
@@ -56,7 +60,7 @@ class SiswaController extends Controller
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('error', $error);
         }
-
+    $listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
         return View('admin.siswa.tambahsiswa', compact('iduser', 'listkelas'));
     }
 
@@ -126,6 +130,7 @@ class SiswaController extends Controller
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('error', $error);
         }
+$listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
 
         return View('admin.siswa.updatesiswa', compact('user','iduser', 'datapengguna','listkelas', 'idkelas'));
     }

@@ -27,7 +27,8 @@ class AbsensiController extends Controller
     public function index()
     {
         $iduser = Auth::id();
-        return View('admin.siswa.absensi', compact('iduser'));
+        $listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
+        return view('admin.siswa.absensi', compact('iduser', 'listkelas'));
     }
 
     public function absenkelas(UserRequest $request){

@@ -80,7 +80,12 @@
                                 <div class="col-xs-12">
                                     <div class="form-group">
                                     <label for="txtStatus" class="control-label">Kelas : </label>
-                                    {{ Form::select('kelas', $listkelas ,$idkelas->id_kelas) }}        
+                                 <select id="kelas" name="kelas" class="form-control" >
+                                        
+                                        @foreach ($listkelas as $listkelas)
+                                            <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->nama_kelas }}</option>
+                                         @endforeach 
+                                     </select>    
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +122,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtDate" class="control-label">Tanggal Lahir</label>
                                     <input type="date" name="itanggallahir" id="itanggallahir" class="form-control input-md" value="{{$datapengguna->tanggal_lahir}}"

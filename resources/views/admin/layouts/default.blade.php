@@ -2,19 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-	<title> @section('title')
+    <title> @section('title')
             | SI-SMK
-        	@show 
+            @show 
     </title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @yield('header_styles')
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-
+@include('layouts.topbar')
 
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -27,14 +27,23 @@
     {{-- global css --}}
 
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" type="text/css"/>
+@include('layouts.head')
 
-
+@include('layouts.sidebar')
+<div class="main">
+    @yield('content')
+</div>
+</div>
+  @include('layouts.foot')
 
     
 <script src="{{ asset('assets/js/app.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top"
+   data-toggle="tooltip" data-placement="left">
+    <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
+</a>
 
 <!-- end of global js -->
 <!-- begin page level js -->

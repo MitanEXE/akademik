@@ -1,4 +1,4 @@
-@extends('admin/layouts/default')
+@extends('layouts.app')
 
 {{-- Page title --}}
 @section('title')
@@ -16,24 +16,32 @@
     <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
 
 @stop
-
-{{-- Page content --}}
 @section('content')
-
     <section class="content-header">
-        <!--section starts-->
-        <h1>Tambah Siswa</h1>
-    </section>
+    <ol class="breadcrumb">
+       <div class="breadcrumb">
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
+</div>
+</ol>
+</section>
+  
     <!--section ends-->
-    <section class="content">
-        <!--main content-->
+   <section class="datagrid-panel">
+    <div class="content">
+        <div class="panel">
+            <div class="content-header no-mg-top">
+                <i class="fa fa-newspaper-o"></i>
+                <div class="content-header-title">@yield('title')</div>
+            </div>
+                <br>
         <div class="row">
             <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             <i class="livicon" data-name="search" data-size="16" data-loop="true" data-c="#fff"
                                data-hc="white"></i>
-                            Tambah Siswa :
+                        
                         </h3>
                         <span class="pull-right clickable">
                             <i class="glyphicon glyphicon-chevron-up"></i>
@@ -45,55 +53,65 @@
                               action="{{ route('tambahsiswa') }}">
                               {{ csrf_field() }}
 
-
-                            <div class="row">
-                                <div class="col-xs-12">
+</div>
+</div>
+                            <br>
+                                <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="txtUsername" class="control-label">Nomor Induk</label>
 
                                         <input type="text" name="iusername" id="iusername" class="form-control input-md">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-12">
+                            
+                           
+                                <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="txtPassword" class="control-label">Password</label>
 
                                         <input type="password" name="ipassword" id="ipassword" class="form-control input-md">
                                     </div>
                                 </div>
+                           
+                           
+                               
+                               <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Kelas : </label>
+                                    <select id="kelas" name="kelas" class="form-control">
+                                        
+                                        @foreach ($listkelas as $listkelas)
+                                            <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->nama_kelas }}</option>
+                                         @endforeach 
+                                     </select>
+                                    </div>
+                                </div>
                             </div>
 
-
                             <div class="row">
-                                <div class="col-xs-12">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="txtStatus" class="control-label">Status Akun : </label>
-                                        {{ Form::select('istatus', ['nonaktif' => 'Non-Aktif', 'aktif' => 'Aktif'], ['class' => 'form-control select2']) }}
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="form-group">
-                                    <label for="txtStatus" class="control-label">Kelas : </label>
-                                    {{ Form::select('kelas', $listkelas, null) }}        
+                                    <br>
+                                     
+                                        <select id="istatus" name="istatus" class="form-control">
+                                            <option value="nonaktif">Non-Aktif</option>
+                                            <option value="aktif">Aktif</option>
+                                          
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-12">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="txtName" class="control-label">Nama</label>
 
                                         <input type="text" name="inama" id="inama" class="form-control input-md">
                                     </div>
                                 </div>
-                            </div>
+                          
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtEmail" class="control-label">Email</label>
@@ -101,6 +119,8 @@
                                            >
                                 </div>
                             </div>
+                       
+
 
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -110,7 +130,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtDate" class="control-label">Tanggal Lahir</label>
                                     <input type="date" name="itanggallahir" id="itanggallahir" class="form-control input-md"
@@ -128,8 +148,11 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtjeniskelamin" class="control-label">Jenis Kelamin</label>
-                                    {{ Form::select('ijeniskelamin', ['Laki-laki' => 'Laki-laki', 'Perempuan' => 'Perempuan'], ['class' => 'form-control select2']) }}
-
+                                    <select id="ijeniskelamin" name="ijeniskelamin" class="form-control">
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                          
+                                        </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -140,12 +163,13 @@
                                 </div>
                             </div>
         
-                            <div class="col-md-12 mar-10">
-                                <div class="col-xs-6 col-md-6">
+                         <div class="col-md-12 mar-10">
+                                <div class="col-xs-12 col-md-12">
                                     <input type="submit" name="btnSubmit" id="btnSubmit" value="Simpan"
                                            class="btn btn-primary btn-block btn-md btn-responsive">
                                 </div>
-                                <div class="col-xs-6 col-md-6">
+                                <br>
+                                <div class="col-xs-12 col-md-12">
                                     <input type="reset" value="Batal"
                                            class="btn btn-success btn-block btn-md btn-responsive">
                                 </div>
@@ -159,19 +183,11 @@
     <!-- content -->
 
 @stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-
-    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/intl-tel-input/js/intlTelInput.min.js') }}"
-            type="text/javascript"></script>
-
-
-    <script type="text/javascript">
+<script>
+         $("#phone").intlTelInput();
+     </script>
+     --}}
+      <script type="text/javascript">
          function Validation() {
 
 
@@ -299,5 +315,18 @@
     {{-- <script>
          $("#phone").intlTelInput();
      </script>
-     --}}
+{{-- page level scripts --}}
+@section('footer_scripts')
+
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/intl-tel-input/js/intlTelInput.min.js') }}"
+            type="text/javascript"></script>
+
+    <script src="{{ asset('assets/js/pages/validationTambahUser.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/tambahuser.js') }}" ></script>
+
+    {{-- 
 @stop

@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable; 
+use Illuminate\Foundation\Auth\User as Authenticatable; 
+use Ultraware\Roles\Traits\HasRoleAndPermission;
 
 class data_pengguna extends Model
 {

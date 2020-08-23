@@ -89,6 +89,8 @@ View User Details
                                                         <input id="pic" name="pic" type="file"
                                                                class="form-control"/>
                                                     </span>
+                                                 <br>
+                                                  <br>
                                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Batal</a>
                                                     <button type="submit" class="btn btn-primary">
                                                     Simpan

@@ -17,7 +17,7 @@
                         <input class="form-control mb-1 mr-sm-1 mb-sm-0" placeholder="Search projects..." type="text">
                     </form>
                 </div>
-                <div class="top-notification">
+<!--                 <div class="top-notification">
                     <div class="notification-icon">
                         <i class="fa fa-envelope-open"></i>
                     </div>
@@ -37,15 +37,7 @@
                                         <div class="notification-time">1 minutes ago</div>
                                     </div>
                                 </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/chocolate.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Lisa</strong> sent you a message</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
+                               
                             </div>
                             <div class="notification-footer">
                                 <a href="">See all notifications</a>
@@ -68,66 +60,29 @@
                                         <div class="notification-time">1 minutes ago</div>
                                     </div>
                                 </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/chocolate.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Lisa</strong> sent you a email</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/belts.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Parker</strong> sent you a email</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/asparagus.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Sophie</strong> sent you a email</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/asparagus.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Sophie</strong> sent you a email</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
-                                <a class="notification-list" href="">
-                                    <div class="notification-image">
-                                        <img alt="pongo" src="{{ asset('images/asparagus.jpg')}}">
-                                    </div>
-                                    <div class="notification-content">
-                                        <div class="notification-text"><strong>Sophie</strong> sent you a email</div>
-                                        <div class="notification-time">1 minutes ago</div>
-                                    </div>
-                                </a>
+                               ]
                             </div>
                             <div class="notification-footer">
                                 <a href="">See all notifications</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="user-top-profile">
                     <div class="user-image">
                         <div class="user-on"></div>
-                        <img alt="pongo" src="{{ asset('images/profile.png')}}">
+                      @if(Auth::user()->picture)
+                                    <img src="{!! url('/').'/uploads/users/'.Auth::user()->picture !!}" alt="img"
+                                         class="img-circle img-bor"/>
+                                @else
+                                    <img src="{!! asset('assets/img/authors/avatar3.jpg') !!}"
+                                         class="img-responsive img-circle" alt="User Image">
+                                @endif
                     </div>
                     <div class="clear">
-                        <div class="user-name">Admin</div>
+                        <div class="user-name">{{ Auth::user()->name }}</div>
                         <ul class="user-top-menu animated bounceInUp">
+                            <li {!! ((Request::is('home/users/')) && !(Request::is('home/users/create')) ? 'class="active" id="active"' : '') !!}>
                             <li><a href="">Profile <div class="badge badge-yellow pull-right">2</div></a></li>
                             <li><a href="">Settings</a></li>
                             <li><a href="">Change Password</a></li>

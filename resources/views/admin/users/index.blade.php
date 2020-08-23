@@ -42,7 +42,8 @@
                         <div class="content-box-header">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button class="btn btn-primary" onclick="main_routes('create', '')"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+                                    <a href="{{ URL::route('tambahuser') }}">
+                                    <button class="btn btn-primary"><i class="fa fa-pencil"></i> Add New @yield('title')</button></a>
                                 </div>
                                 <div class="col-md-6 form-inline justify-content-end">
                                     <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>
@@ -71,7 +72,7 @@
                             <td>{!! $user->status !!}</td>
                             <td>{!! $user->job !!}</td>
                             <td>
-                                <a href="{{ route('goupdateprofile', $user->id) }}"><i class="livicon" data-name="edit"
+                                <a href="{{ route('goupdateprofile', $user->id) }}">Edit<i class="livicon" data-name="edit"
                                     data-size="18" data-loop="true"
                                     data-c="#428BCA"
                                     data-hc="#428BCA"
@@ -79,11 +80,10 @@
                                 
                               
                                      @if (($iduser != $user->id) && ($user->id != 1))
-                                    <a href="{{ route('confirm-deleteuser', $user->id) }}" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>
+                                    <a href="{{ route('confirm-deleteuser', $user->id) }}" data-toggle="modal" data-target="#delete_confirm"><font color="red">Delete</font><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>
                                     @endif
                               
                                            
-                                
                             </td>
                         </tr>
                     @endforeach
@@ -91,7 +91,7 @@
                     </tbody>
                             </table>
                         </div>
-<section class="form-panel"></section>
+    <section class="form-panel"></section>
 
 
 

@@ -7,6 +7,7 @@ use App\Kelas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Excel;
+use Notifiable, HasRoleAndPermission;
 
 class KelasController extends Controller
 {
@@ -78,19 +79,19 @@ class KelasController extends Controller
     public function searchkelas($jeniskelas){
         switch ($jeniskelas) {
             case 1:
-                $search = "TKJ";
+                $search = "RPL";
                 break;            
             case 2:
-                $search = "AP";
+                $search = "ACC";
                 break;
             case 3:
-                $search = "AK";
+                $search = "MKT";
                 break;
             case 4:
-                $search = "PBK";
+                $search = "SMP";
                 break;
             case 5:
-                $search = "PRW";
+                $search = "SD";
                 break;
         }
 

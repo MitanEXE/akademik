@@ -1,4 +1,4 @@
-@extends('admin/layouts/default')
+@extends('layouts.app')
 
 {{-- Page title --}}
 @section('title')
