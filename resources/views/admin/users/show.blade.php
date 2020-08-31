@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @extends('admin/layouts/default')
 
 {{-- Page title --}}
@@ -19,9 +18,25 @@ View User Details
 
 @stop
 
+
 {{-- Page content --}}
 @section('content')
-    
+    <section class="content-header">
+        <!--section starts-->
+        <h1>User Profile</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ route('dashboard') }}">
+                    <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li class="active">User Profile</li>
+        </ol>
+    </section>
     <!--section ends-->
     <section class="content">
     @if (session('status'))
@@ -29,15 +44,6 @@ View User Details
         {{ session('status') }}
     </div>
     @endif
-    <section class="content-header">
-    <ol class="breadcrumb">
-       <div class="breadcrumb">
-    <a href="{{ route('home') }}">Home</a>
-    <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
-</div>
-</ol>
-   
-</section>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav  nav-tabs ">
@@ -53,7 +59,6 @@ View User Details
                     </li>
 
                 </ul>
-            </div>
                 <div  class="tab-content mar-top">
                     <div id="tab1" class="tab-pane fade active in">
                         <div class="row">
@@ -89,8 +94,6 @@ View User Details
                                                         <input id="pic" name="pic" type="file"
                                                                class="form-control"/>
                                                     </span>
-                                                 <br>
-                                                  <br>
                                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Batal</a>
                                                     <button type="submit" class="btn btn-primary">
                                                     Simpan
@@ -245,8 +248,6 @@ View User Details
                             <div class="col-md-12 pd-top">
                                 <form class="form-horizontal">
                                     <div class="form-body">
-                                        <br>
-                                        <br>
                                         <div class="form-group">
                                             <label for="inputpassword" class="col-md-3 control-label">
                                                 Password
@@ -296,6 +297,7 @@ View User Details
         </div>
     </section>
 @stop
+
 {{-- page level scripts --}}
 @section('footer_scripts')
 <!-- Bootstrap WYSIHTML5 -->

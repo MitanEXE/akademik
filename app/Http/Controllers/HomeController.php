@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+Use App\Informasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = Auth::user();
+        $iduser = Auth::id();
+
+         // Grab all the users
+        $info = Informasi::where('untuk','Pengguna')
+                       ->orderBy('created_at', 'desc')
+                       ->take(4)
+                       ->get();
+
+
+        return view('home', compact('users','iduser','info'));
+        // return view('home');
     }
 }

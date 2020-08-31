@@ -2,8 +2,8 @@
 
 {{-- Page title --}}
 @section('title')
-    Absensi
-    @parent
+Pilih Kelas Siswa
+@parent
 @stop
 
 {{-- page level styles --}}
@@ -25,22 +25,21 @@
 
     </ol>
 </section>
-          <section class="datagrid-panel">
+            <!-- Main content -->
+            <section class="datagrid-panel">
     <div class="content">
         <div class="panel">
             <div class="content-header no-mg-top">
                 <i class="fa fa-newspaper-o"></i>
                 <div class="content-header-title">@yield('title')</div>
             </div>
-                <br>
-                
-                            <br>
+              
                             <div class="panel-body">
                                 <div>Silakan Pilih Program Keahlian dan Kelas</div>
                                 <br>
                                 <form role="form" action="{{route ('absenkelas') }}" method="POST">
                                         {{ csrf_field() }} 
-                                      <div class="form-group">
+                                    <div class="form-group">
                                         <label>Program Keahlian</label>
                                         <select class="form-control" id="ProgramKeahlian" name="ProgramKeahlian" onchange="getkelas();">
                                             <option value="-1"></option>
@@ -57,7 +56,9 @@
                                         <label>Kelas</label>
                                         <select class="form-control" id="listkelas" name="listkelas" >
                                         </select>
-                                      </div>
+                                    </div>
+
+                                    
                                     <button type="submit" class="btn btn-primary" role="button">Lanjutkan</button>
                                     <button type="reset" class="btn btn-responsive btn-default">Batal</button>
                                 </form>
@@ -70,8 +71,67 @@
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
-    <script src="{{ asset('assets/js/absensi.js') }}"></script>
-
     
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
+    <script type="text/javascript">
+      function getkelas() {
+      var ProgramKeahlian = document.getElementById("ProgramKeahlian").value;
+      var pilihan = null;
+      switch(ProgramKeahlian) {
+        case "Rekayasa Perangkat Lunak (RPL)":
+        pilihan = "1";
+        break;
+        case "Accounting (ACC)" : 
+        pilihan = "2";
+        break;
+        case "Marketing (MKT)" : 
+        pilihan = "3";
+        break;
+        case "Sekolah Menengah Pertama (SMP)" : 
+        pilihan = "4";
+        break;
+        case "Sekolah Dasar (SD)" : 
+        pilihan = "5";
+        break;
+      }
+
+      // clear daftar
+      var listkelas = document.getElementById("listkelas");
+      while (listkelas.firstChild) {
+          listkelas.removeChild(listkelas.firstChild);
+      }
+
+
+      $.ajax({
+        url:'../akademik/kelas/listkelas/' + pilihan,
+        type:'GET',
+        dataType: 'json',
+        success: function( json ) {
+          $.each(json, function(i, value) {
+            $('#listkelas')
+            .append($('<option selected>' + value["nama_kelas"] + '</option>')
+              .attr('value', value["id_kelas"]));
+          });
+        }
+      });
+
+      var mapel = document.getElementById("mapel");
+      while (mapel.firstChild) {
+          mapel.removeChild(mapel.firstChild);
+      }
+      
+      $.ajax({
+        url:'../mapel/listkodemapel/',
+        type:'GET',
+        dataType: 'json',
+        success: function( json ) {
+          $.each(json, function(i, value) {
+            $('#mapel')
+            .append($('<option >' + value["kode_mapel"] + ' - ' + value["nama_mapel"] + '</option>')
+              .attr('value', value["kode_mapel"]));
+          });
+        }
+      });
+    }
+    </script>    
 @stop

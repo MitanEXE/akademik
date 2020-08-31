@@ -21,6 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(array('prefix' => 'get'), function () {
+    Route::get('listkelas', array('as' => 'getlistkelas', function(App\Kelas $kelas){
+        return $kelas->listkelas();
+    }));
+});
 Route::get('infopublik', 'InfoController@cekinfopublik')->name('infopublik');
 
 
@@ -86,6 +91,7 @@ Route::group(array('prefix' => 'akademik'), function () {
 
     Route::group(array('prefix' => 'absen'), function () {
         Route::get('/', array('as' => 'absen', 'uses' => 'AbsensiController@index'));
+         Route::get('/coba', array('as' => 'coba', 'uses' => 'AbsensiController@coba'));
         Route::post('absenkelas', array('as' => 'absenkelas', 'uses' => 'AbsensiController@absenkelas'));
         Route::post('doabsen', array('as' => 'doabsen', 'uses' => 'AbsensiController@doabsen'));
 

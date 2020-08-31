@@ -98,7 +98,7 @@ class SiswaController extends Controller
         $relasdatapenggunauser->save();
 
         // add role to new user Siswa
-        $adduser->attachRole(3);
+        // $adduser->attachRole(3);
 
         $tambahrombel = new Rombel;
         $tambahrombel->id_kelas =  $request->input('kelas');

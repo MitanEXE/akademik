@@ -7,7 +7,7 @@
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
+    <link rel="shortcut icon" href="{{ asset('images/obor.png') }}">
     <link rel="stylesheet" href="{{ asset('plugins/tether/dist/css/tether.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" />

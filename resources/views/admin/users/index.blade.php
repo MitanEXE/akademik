@@ -55,7 +55,7 @@
                             <table class="table table-striped table-bordered" id="datagrid">
                                 <thead>
                         <tr class="filters">
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Name</th>
                             <th>User E-mail</th>
                             <th>Status</th>
@@ -64,9 +64,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                         @php
+    $total = 0; 
+    @endphp
                     @foreach ($users as $user)
                         <tr>
-                            <td>{!! $user->id !!}</td>
+                            <td> @php
+        $total++;
+        @endphp</td>
                             <td>{!! $user->name !!}</td>
                             <td>{!! $user->email !!}</td>
                             <td>{!! $user->status !!}</td>
