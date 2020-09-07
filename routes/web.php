@@ -125,4 +125,41 @@ Route::group(array('prefix' => 'akademik'), function () {
         Route::post('sendmessage', 'socketController@sendMessage')->name('kirimpesanchat');
         Route::get('writemessage', 'socketController@writemessage');
     });
+    Route::group(array('prefix' => 'blok'), function () {
+        Route::get('/', array('as' => 'listblok', 'uses' => 'BlokController@index'));
+        Route::get('listblok/{jenisblok}', array('as' => 'listblok', 'uses' => 'BlokController@searchblok'));
+        Route::get('delete/{idblok}', array('as' => 'deleteblok', 'uses' => 'BlokController@delete'));
+        Route::post('createblok', array('as' => 'createblok', 'uses' => 'BlokController@create'));
+        Route::post('editblok', array('as' => 'editblok', 'uses' => 'BlokController@edit'));
+        Route::get('testcetak', 'BlokController@cetak');
+    });
+     Route::group(array('prefix' => 'semester'), function () {
+        Route::get('/', array('as' => 'listsemester', 'uses' => 'SemesterController@index'));
+        Route::get('listsemester/{jenissemester}', array('as' => 'listsemester', 'uses' => 'SemesterController@searchsemester'));
+        Route::get('delete/{idsemester}', array('as' => 'deletesemester', 'uses' => 'SemesterController@delete'));
+        Route::post('createsemester', array('as' => 'createsemester', 'uses' => 'SemesterController@create'));
+        Route::post('editsemester', array('as' => 'editsemester', 'uses' => 'SemesterController@edit'));
+        Route::get('testcetak', 'SemesterController@cetak');
+    });
+        Route::group(array('prefix' => 'sesi'), function () {
+        Route::get('/', array('as' => 'listsesi', 'uses' => 'SesiController@index'));
+        Route::get('listsesi/{jenissesi}', array('as' => 'listsesi', 'uses' => 'SesiController@searchsesi'));
+        Route::get('delete/{idsesi}', array('as' => 'deletesesi', 'uses' => 'SesiController@delete'));
+        Route::post('createsesi', array('as' => 'createsesi', 'uses' => 'SesiController@create'));
+        Route::post('editsesi', array('as' => 'editsesi', 'uses' => 'SesiController@edit'));
+        Route::get('testcetak', 'SesiController@cetak');
+    });
+        Route::group(array('prefix' => 'tahunajaran'), function () {
+        Route::get('/', array('as' => 'listtahunajaran', 'uses' => 'TahunAjaranController@index'));
+        Route::get('listtahunajaran/{jenistahunajaran}', array('as' => 'listtahunajaran', 'uses' => 'TahunAjaranController@searchtahunajaran'));
+        Route::get('delete/{idtahunajaran}', array('as' => 'deletetahunajaran', 'uses' => 'TahunAjaranController@delete'));
+        Route::post('createtahunajaran', array('as' => 'createtahunajaran', 'uses' => 'TahunAjaranController@create'));
+        Route::post('edittahunajaran', array('as' => 'edittahunajaran', 'uses' => 'TahunAjaranController@edit'));
+        Route::get('testcetak', 'TahunAjaranController@cetak');
+    });
+       Route::resource('Jadwal', 'JadwalController');
+        Route::group(array('prefix' => 'jadwal'), function () {
+        Route::get('/', array('as' => 'jadwal', 'uses' => 'JadwalController@index'));
+        // Route::get('{userId}', array('as' => 'jadwal.show', 'uses' => 'JadwalController@show'));
+        });
       });

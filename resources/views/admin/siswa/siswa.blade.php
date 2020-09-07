@@ -1,5 +1,5 @@
 @extends('admin.layouts.default')
-
+@extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
     Siswa

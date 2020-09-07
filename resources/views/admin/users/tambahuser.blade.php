@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
     Tambah Pengguna

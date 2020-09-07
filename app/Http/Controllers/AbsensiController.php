@@ -45,10 +45,11 @@ class AbsensiController extends Controller
         $siswa = DB::table('users')
                             ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
                             ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
-                            ->where('rombel.id_kelas', '=', $kelassiswa->id_kelas)
+                            // ->where('rombel.id_kelas', '=', 'kelas.$kelassiswa->id_kelas')
+                            ->where('rombel.id_kelas', '=', '$kelassiswa->id_kelas')
                             ->select('id','username', 'name', 'gender', 'agama', 'kelas.id_kelas')
                             ->get();
-        $kelas = $request->get('listkelas');
+        $kelas = $request->get('listkelas2');
         $tglsekarang = Carbon\Carbon::now()->format('d M Y \\J\\a\\m H:i ');
         return View('admin.siswa.absenkelas', compact('siswa', 'iduser', 'tglsekarang', 'kelas'));
     }

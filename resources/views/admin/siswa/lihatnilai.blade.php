@@ -1,5 +1,5 @@
 @extends('admin/layouts/default')
-
+@extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
 Data Nilai Siswa
@@ -54,7 +54,7 @@ Data Nilai Siswa
                                     <thead>
                                     <tr>
                                         <th style="width: 20px;"></th>
-                                        <th>Id User</th>
+                                        <th>No User</th>
                                         <th>Nik</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>
@@ -85,8 +85,8 @@ Data Nilai Siswa
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p>
-                                                    <label>Id Siswa</label>
-                                                    <input readonly="readonly" id="idsiswa" name="idsiswa" type="text" placeholder="Id Siswa" class="form-control " value="ID">
+                                                    <label>No</label>
+                                                    <input readonly="readonly" id="idsiswa" name="idsiswa" type="text" placeholder="No Siswa" class="form-control " value="ID">
                                                 </p>
                                                 <p>
                                                     <label>Nama Siswa</label>

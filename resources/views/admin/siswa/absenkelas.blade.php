@@ -1,8 +1,8 @@
 @extends('admin/layouts/default')
-
+@extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
-Simple Tables
+Absensi
 @parent
 @stop
 

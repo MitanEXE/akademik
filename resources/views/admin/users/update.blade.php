@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('admin/layouts/default')
+@extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
     Update Pengguna
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="txtDate" class="control-label">Tanggal Lahir</label>
                                     <input type="date" name="itanggallahir" id="itanggallahir" class="form-control input-md"

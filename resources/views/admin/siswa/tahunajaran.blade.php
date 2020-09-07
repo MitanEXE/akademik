@@ -2,7 +2,7 @@
 @extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
-    Kelas
+    Tahun Ajaran
     @parent
 @stop
 
@@ -55,10 +55,10 @@
                                     <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="width: 88px;">No Kelas</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="width: 88px;">No</th>
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Full Name
-                                            : activate to sort column ascending" style="width: 222px;">Kelas</th>
+                                            : activate to sort column ascending" style="width: 222px;">Tahun Ajaran</th>
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Edit
                                             : activate to sort column ascending" style="width: 88px;">Ubah</th>
@@ -70,15 +70,15 @@
                                         <tbody>
                                         
 
-                                            @foreach ($kelas as $list)
+                                            @foreach ($tahunajaran as $list)
                                                 @if ($loop->index % 2 )
                                                     <tr role="row" class="even">
                                                 @else 
                                                     <tr role="row" class="odd">
                                                 @endif
                                                 
-                                                <td class="sorting_1">{!! $list->id_kelas !!}</td>
-                                                <td>{!! $list->nama_kelas !!}</td>
+                                                <td class="sorting_1">{!! $list->id_tahun !!}</td>
+                                                <td>{!! $list->tahun_ajaran !!}</td>
                                                 <td>
                                                     <a class="edit" href="javascript:;">Ubah</a>
                                                 </td>
@@ -108,6 +108,6 @@
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/js/pages/table_kelas.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pages/table_tahunajaran.js') }}" ></script>
     
 @stop
