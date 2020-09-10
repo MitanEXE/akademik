@@ -58,7 +58,12 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="width: 88px;">No Kelas</th>
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Full Name
-                                            : activate to sort column ascending" style="width: 222px;">Kelas</th>
+                                            : activate to sort column ascending" style="width: 222px;" align="center">Kelas</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                 Full Name
+                                            : activate to sort column ascending" style="width: 222px;" align="center">Kode Kelas</th>
+
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Edit
                                             : activate to sort column ascending" style="width: 88px;">Ubah</th>
@@ -79,6 +84,7 @@
                                                 
                                                 <td class="sorting_1">{!! $list->id_kelas !!}</td>
                                                 <td>{!! $list->nama_kelas !!}</td>
+                                                <td>{!! $list->kode_kelas !!}</td>
                                                 <td>
                                                     <a class="edit" href="javascript:;">Ubah</a>
                                                 </td>
