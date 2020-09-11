@@ -162,4 +162,12 @@ Route::group(array('prefix' => 'akademik'), function () {
         Route::get('/', array('as' => 'jadwal', 'uses' => 'JadwalController@index'));
         // Route::get('{userId}', array('as' => 'jadwal.show', 'uses' => 'JadwalController@show'));
         });
+        Route::group(array('prefix' => 'jurusan'), function () {
+        Route::get('/', array('as' => 'listjurusan', 'uses' => 'jurusanController@index'));
+        Route::get('listjurusan/{jenisjurusan}', array('as' => 'listjurusan', 'uses' => 'jurusanController@searchjurusan'));
+        Route::get('delete/{idjurusan}', array('as' => 'deletejurusan', 'uses' => 'jurusanController@delete'));
+        Route::post('createjurusan', array('as' => 'createjurusan', 'uses' => 'jurusanController@create'));
+        Route::post('editjurusan', array('as' => 'editjurusan', 'uses' => 'jurusanController@edit'));
+        Route::get('testcetak', 'jurusanController@cetak');
+    });
       });

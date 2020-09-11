@@ -79,6 +79,7 @@
                         <!-- Print submenu -->
                         <li><a href="{{ URL::to('akademik/semester') }}">Semester</a></li>
                         <li><a href="{{ URL::to('akademik/tahunajaran') }}">Tahun Ajaran</a></li>
+                        <li><a href="{{ URL::to('akademik/jurusan') }}">Jurusan</a></li>
                        
                   
 
