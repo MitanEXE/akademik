@@ -159,11 +159,15 @@ Route::group(array('prefix' => 'akademik'), function () {
     });
        Route::resource('Jadwal', 'JadwalController');
         Route::group(array('prefix' => 'jadwal'), function () {
+
         Route::get('/', array('as' => 'jadwal', 'uses' => 'JadwalController@index'));
+
         // Route::get('{userId}', array('as' => 'jadwal.show', 'uses' => 'JadwalController@show'));
         });
         Route::group(array('prefix' => 'jurusan'), function () {
         Route::get('/', array('as' => 'listjurusan', 'uses' => 'jurusanController@index'));
+        Route::get('add', array('as' => 'addjadwal', 'uses' => 'JadwalController@addjadwal'));
+        Route::post('tambahjadwal', array('as' => 'tambahjadwal', 'uses' => 'JadwalController@create'));
         Route::get('listjurusan/{jenisjurusan}', array('as' => 'listjurusan', 'uses' => 'jurusanController@searchjurusan'));
         Route::get('delete/{idjurusan}', array('as' => 'deletejurusan', 'uses' => 'jurusanController@delete'));
         Route::post('createjurusan', array('as' => 'createjurusan', 'uses' => 'jurusanController@create'));

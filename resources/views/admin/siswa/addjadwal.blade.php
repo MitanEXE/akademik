@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Tambah Siswa
+    Tambah Jadwal
     @parent
 @stop
 
@@ -49,131 +49,90 @@
 
                     </div>
                     <div class="panel-body">
-                        <form method="POST" name="FormTambahSiswa" onsubmit="return Validation()" enctype="multipart/form-data"
-                              action="{{ route('tambahsiswa') }}">
+                        <form method="POST" name="FormTambahJadwal" onsubmit="return Validation()" enctype="multipart/form-data"
+                              action="{{ route('tambahjadwal') }}">
                               {{ csrf_field() }}
 
 </div>
 </div>
                             <br>
-                                <div class="col-md-12">
+                                
+                               <div class="col-md-12">
                                     <div class="form-group">
-                                    <label for="txtUsername" class="control-label">Nomor Induk</label>
-
-                                        <input type="text" name="iusername" id="iusername" class="form-control input-md">
+                             <label for="txtStatus" class="control-label">Mapel : </label>
+                                    <select id="mapel" name="mapel" class="form-control">
+                                        
+                                        @foreach ($listmapel as $listmapel)
+                                            <option value="{{ $listmapel->id_mapel }}">{{ $listmapel->nama_mapel }}</option>
+                                         @endforeach 
+                                     </select>
                                     </div>
                                 </div>
                             
-                           
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                    <label for="txtPassword" class="control-label">Password</label>
 
-                                        <input type="password" name="ipassword" id="ipassword" class="form-control input-md">
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Sesi : </label>
+                                    <select id="sesi" name="sesi" class="form-control">
+                                        
+                                        @foreach ($listsesi as $listsesi)
+                                            <option value="{{ $listsesi->id_sesi }}">{{ $listsesi->sesi }}</option>
+                                         @endforeach 
+                                     </select>
                                     </div>
                                 </div>
-                           
-                           
-                               
-                               <div class="col-md-12">
+
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Semester : </label>
+                                    <select id="semester" name="semester" class="form-control">
+                                        
+                                        @foreach ($listsemester as $listsemester)
+                                            <option value="{{ $listsemester->id_semester }}">{{ $listsemester->semester }}</option>
+                                         @endforeach 
+                                     </select>
+                                    </div>
+                                </div>
+                            
+
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Tahun Ajaran : </label>
+                                    <select id="tahunajaran" name="tahunajaran" class="form-control">
+                                        
+                                        @foreach ($listtahunajaran as $listtahunajaran)
+                                            <option value="{{ $listtahunajaran->id_tahun }}">{{ $listtahunajaran->tahun_ajaran }}</option>
+                                         @endforeach 
+                                     </select>
+                                    </div>
+                                </div>
+                    
+                        <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Blok : </label>
+                                    <select id="blok" name="blok" class="form-control">
+                                        
+                                        @foreach ($listblok as $listblok)
+                                            <option value="{{ $listblok->id_blok }}">{{ $listblok->blok }}</option>
+                                         @endforeach 
+                                     </select>
+                                    </div>
+                                </div>
+                            
+
+                            <div class="col-md-12">
                                     <div class="form-group">
                              <label for="txtStatus" class="control-label">Kelas : </label>
                                     <select id="kelas" name="kelas" class="form-control">
                                         
                                         @foreach ($listkelas as $listkelas)
-                                            <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->kode_kelas }}</option>
-                                         @endforeach 
-                                     </select>
-                                    </div>
-                                </div>
-                            
-
-                            <div class="col-md-12">
-                                    <div class="form-group">
-                             <label for="txtStatus" class="control-label">Jurusan : </label>
-                                    <select id="jurusan" name="jurusan" class="form-control">
-                                        
-                                        @foreach ($listjurusan as $listjurusan)
-                                            <option value="{{ $listjurusan->id_jurusan }}">{{ $listjurusan->nama_jurusan }}</option>
+                                        <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->kode_kelas }}</option>
                                          @endforeach 
                                      </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                    <label for="txtStatus" class="control-label">Status Akun : </label>
-                                    <br>
-                                     
-                                        <select id="istatus" name="istatus" class="form-control">
-                                            <option value="nonaktif">Non-Aktif</option>
-                                            <option value="aktif">Aktif</option>
-                                          
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                    <label for="txtName" class="control-label">Nama</label>
-
-                                        <input type="text" name="inama" id="inama" class="form-control input-md">
-                                    </div>
-                                </div>
-                          
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtEmail" class="control-label">Email</label>
-                                    <input type="text" name="iemail" id="iemail" class="form-control input-md"
-                                           >
-                                </div>
-                            </div>
-                       
-
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtTempatLahir" class="control-label">Tempat Lahir</label>
-                                    <input type="text" name="itempatlahir" id="itempatlahir" class="form-control input-md"
-                                            >
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtDate" class="control-label">Tanggal Lahir</label>
-                                    <input type="date" name="itanggallahir" id="itanggallahir" class="form-control input-md"
-                                            >
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtAlamat" class="control-label">Alamat</label>
-                                    <input type="text" name="ialamat" id="ialamat"
-                                           class="form-control input-md" >
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtjeniskelamin" class="control-label">Jenis Kelamin</label>
-                                    <select id="ijeniskelamin" name="ijeniskelamin" class="form-control">
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                          
-                                        </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="txtPhone" class="control-label">No HP</label>                             
-                                    <input type="text" name="inohp" id="inohp" class="form-control input-md"
-                                            >
-                                </div>
-                            </div>
+                                                  
         
                          <div class="col-md-12 mar-10">
                                 <div class="col-xs-12 col-md-12">

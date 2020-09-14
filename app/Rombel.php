@@ -16,7 +16,7 @@ class Rombel extends Model
 
 
     protected $fillable = [
-        'id_kelas', 'id_user',
+        'id_kelas', 'id_user','id_jurusan',
     ];
 
     public $timestamps = false;

@@ -114,6 +114,9 @@
                 <a href="{{ route('jadwal') }}">
                     Lihat jadwal
                 </a>
+                <a href="{{ URL::to('akademik/jurusan/add') }}">
+                    Tambah Jadwal
+                </a>
             </li>
                   @endif
 

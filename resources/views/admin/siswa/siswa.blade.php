@@ -91,7 +91,7 @@
                                                 <td>{!! $siswa->name !!}</td>
                                                 <td>{!! $siswa->gender !!}</td>
                                                 <td>{!! $siswa->alamat !!}</td>
-                                                <td>{!! $siswa->nama_kelas !!}</td>
+                                                <td>{!! $siswa->kode_kelas !!}</td>
                                                 <td>
                                                     <a href="{{route('updatesiswa', $siswa->id )}}" style="width: 20px;">Ubah</a>
                                                 </td>

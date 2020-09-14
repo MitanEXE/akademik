@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Request;
 use App\Kelas;
 use App\Rombel;
 use App\User;
+use App\Jurusan;
 Use App\data_pengguna;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,7 @@ class SiswaController extends Controller
         					->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
                             ->leftjoin('data_pengguna','data_pengguna.id', '=', 'users.data_pengguna_id')
         					->where('users.job', '=', 'siswa')
-                            ->select('users.id', 'users.username', 'users.name', 'users.gender', 'data_pengguna.alamat', 'kelas.nama_kelas')
+                            ->select('users.id', 'users.username', 'users.name', 'users.gender', 'data_pengguna.alamat', 'kelas.kode_kelas')
         					->get();
         // $siswa = User::where('job', 'siswa')->hasOne('Rombel');
         // $siswa = User::All();
@@ -50,7 +51,10 @@ class SiswaController extends Controller
         try {
             $iduser = Auth::id();
             $kelas = Kelas::All();
-            $listkelas = $kelas->pluck('nama_kelas','id_kelas');
+            $jurusan = Jurusan::All();
+            $listkelas = $kelas->pluck('kode_kelas','id_kelas');
+            $listjurusan = $jurusan->pluck('nama_jurusan','id_kelas');
+
             // dd($listkelas);
 
         } catch (UserNotFoundException $e) {
@@ -60,16 +64,14 @@ class SiswaController extends Controller
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('error', $error);
         }
-    $listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
-        return View('admin.siswa.tambahsiswa', compact('iduser', 'listkelas'));
+    $listkelas = DB::table('kelas')->select('id_kelas','kode_kelas')->get();
+    $listjurusan = DB::table('jurusan')->select('id_jurusan','nama_jurusan')->get();
+        return View('admin.siswa.tambahsiswa', compact('iduser','listkelas', 'listjurusan'));
     }
 
 
     public function create(UserRequest $request)
     {
-
-
-
         // Store the blog post...
 
         $adduser = new User;
@@ -102,6 +104,7 @@ class SiswaController extends Controller
 
         $tambahrombel = new Rombel;
         $tambahrombel->id_kelas =  $request->input('kelas');
+        $tambahrombel->id_jurusan =  $request->input('jurusan');
         $tambahrombel->user_id = $adduser->id;
         $tambahrombel->save();
        
@@ -118,7 +121,7 @@ class SiswaController extends Controller
             // Get the user information
             $user = User::find($id);
             $kelas = Kelas::All();
-            $listkelas = $kelas->pluck('nama_kelas','id_kelas');
+            $listkelas = $kelas->pluck('kode_kelas','id_kelas');
             $datapengguna = $user->datapengguna;
             $idkelas = Rombel::where('user_id', $user->id)->first();
 
@@ -130,7 +133,7 @@ class SiswaController extends Controller
             // Redirect to the user management page
             return Redirect::route('admin.users.index')->with('error', $error);
         }
-$listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
+$listkelas = DB::table('kelas')->select('id_kelas','kode_kelas')->get();
 
         return View('admin.siswa.updatesiswa', compact('user','iduser', 'datapengguna','listkelas', 'idkelas'));
     }
@@ -188,7 +191,7 @@ $listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
                             ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
                             ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
                             ->where('users.job', '=', 'siswa')
-                            ->get(['users.id', 'users.name', 'kelas.nama_kelas']);
+                            ->get(['users.id', 'users.name', 'kelas.kode_kelas']);
          // $siswa = User::where('job', 'siswa')->hasOne('Rombel');
         // $siswa = User::All();
         return $hasilsearch;
