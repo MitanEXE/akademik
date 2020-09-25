@@ -113,7 +113,7 @@ Pilih Kelas Siswa
         success: function( json ) {
           $.each(json, function(i, value) {
             $('#listkelas')
-            .append($('<option selected>' + value["nama_kelas"] + '</option>')
+            .append($('<option selected>' + value["nama_kelas "] + '</option>')
               .attr('value', value["id_kelas"]));
           });
         }

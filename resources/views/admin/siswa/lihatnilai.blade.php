@@ -54,7 +54,7 @@ Data Nilai Siswa
                                     <thead>
                                     <tr>
                                         <th style="width: 20px;"></th>
-                                        <th>No User</th>
+                                        <th>No</th>
                                         <th>Nik</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>

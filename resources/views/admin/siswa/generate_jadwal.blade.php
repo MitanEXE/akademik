@@ -43,8 +43,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                	<a href="{{ route('Jadwal.show',Auth::user()->id) }}">
- 					<button class="btn btn-primary"><i class="fa fa-pencil"></i> Generate @yield('title')</button></a>
+                	<form action="{{ route('Jadwal.store') }}" method="post">
+                         @csrf
+                        <input type="hidden" name="id" value="{{Auth::user()->id}}">
+ 					<button class="btn btn-primary" type="submit"><i class="fa fa-pencil"></i> Generate @yield('title')</button>
+                </form>
+
 
  					<div class="card-body">
                     <table class="table table-bordered border-primary">

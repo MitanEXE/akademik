@@ -75,5 +75,28 @@ class JurusanController extends Controller
         })->export('xls');
 
     }
+    public function searchjurusan($jenisjurusan){
+        switch ($jeniskelas) {
+            case 1:
+                $search = "RPL";
+                break;            
+            case 2:
+                $search = "ACC";
+                break;
+            case 3:
+                $search = "MKT";
+                break;
+            case 4:
+                $search = "SMP";
+                break;
+            case 5:
+                $search = "SD";
+                break;
+        }
+
+        $hasilsearch = Jurusan::where('nama_jurusan', $search)->orWhere('nama_jurusan', 'like', '%' . $search . '%')->get();
+
+        return $hasilsearch;
+    }
 
 }

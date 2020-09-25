@@ -79,13 +79,13 @@ class KelasController extends Controller
     public function searchkelas($jeniskelas){
         switch ($jeniskelas) {
             case 1:
-                $search = "RPL";
+                $search = "X";
                 break;            
             case 2:
-                $search = "ACC";
+                $search = "XI";
                 break;
             case 3:
-                $search = "MKT";
+                $search = "XII";
                 break;
             case 4:
                 $search = "SMP";
@@ -95,7 +95,7 @@ class KelasController extends Controller
                 break;
         }
 
-        $hasilsearch = Kelas::where('nama_kelas', $search)->orWhere('nama_kelas', 'like', '%' . $search . '%')->get();
+        $hasilsearch = Kelas::where('kode_kelas', $search)->orWhere('kode_kelas', 'like', '%' . $search . '%')->get();
 
         return $hasilsearch;
     }

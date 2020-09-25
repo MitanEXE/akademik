@@ -57,6 +57,11 @@ View User Details
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                             Change Password</a>
                     </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab">
+                            <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                            Change Password</a>
+                    </li>
 
                 </ul>
                 <div  class="tab-content mar-top">
@@ -150,6 +155,27 @@ View User Details
                                                                 {{ $user->job }}
                                                             </td>
                                                         </tr>
+                                                         <tr>
+                                                            <td>Agama</td>
+                                                            <td>
+                                                                {{ $user->agama }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Anak Ke</td>
+                                                            <td>
+                                                                {{ $datapengguna->anak_ke }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <tr>
+
+                                                            <td>Jumlah Saudara</td>
+                                                            <td>
+                                                                {{ $datapengguna->jumlah_saudara }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                         <tr>
                                                             <td>Alamat</td>
                                                             <td>

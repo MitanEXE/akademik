@@ -90,7 +90,7 @@ class NilaiController extends Controller
     public function tambahnilaipilihkelas()
     {
         $iduser = Auth::id();
-        $listkelas = DB::table('kelas')->select('id_kelas','nama_kelas')->get();
+        $listkelas = DB::table('kelas')->select('id_kelas','kode_kelas')->get();
         return view('admin.siswa.tambahnilai', compact('iduser', 'listkelas'));
     }
 
