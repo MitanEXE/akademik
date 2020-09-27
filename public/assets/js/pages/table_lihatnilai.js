@@ -115,7 +115,7 @@ $(document).ready(function() {
                 { "data": "id" },
                 { "data": "username" },
                 { "data": "name" },
-                { "data": "nama_kelas" },
+                { "data": "kode_kelas" },
                 { "data": "gender" }
             ],
             "order": [[1, 'asc']],

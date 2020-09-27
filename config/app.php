@@ -163,7 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         // Zizaco\Entrust\EntrustServiceProvider::class,
         // Zizaco\Entrust\EntrustServiceProvider::class,
-        // Maatwebsite\Excel\ExcelServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         
         /*
          * Package Service Providers...
@@ -178,6 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -233,6 +235,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

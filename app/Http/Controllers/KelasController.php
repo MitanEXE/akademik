@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request as UserRequest;
 use App\Kelas;
+use PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use App\Exports\KelasExport;
 use Excel;
 use Notifiable, HasRoleAndPermission;
 
@@ -27,7 +29,13 @@ class KelasController extends Controller
         // Show the page
         return View('admin.siswa.kelas', compact('kelas', 'iduser'));
     }
-
+    public function cetak_pdf()
+    {
+        $kelas = Kelas::all();
+ 
+        $pdf = PDF::loadview('print.pdf.kelas',['kelas'=>$kelas]);
+        return $pdf->download('laporan-kelas.pdf');
+    }
     public function delete($id_kelas) 
     {
     	Kelas::where('id_kelas', $id_kelas)->delete();
@@ -74,6 +82,10 @@ class KelasController extends Controller
 
         })->export('xls');
 
+    }
+public function export_excel()
+    {
+        return Excel::download(new KelasExport, 'Kelas.xlsx');
     }
 
     public function searchkelas($jeniskelas){

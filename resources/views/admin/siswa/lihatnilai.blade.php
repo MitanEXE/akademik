@@ -48,14 +48,25 @@ Data Nilai Siswa
                 @endif
 <br>
 <br>
+<button>
+     <div class="col-md-6">
+                                 
+                                 <a href="/nilai/export_excel">
+                                 <button id="sample_editable_1_new"  class="btn btn-success"> Export Excel</button></a>
+                                 <a href="/nilai/print">
+                                 <button id="sample_editable_1_new"  class="btn btn-warning">Export Windows</button></a>
+                                 <a href="/nilai/cetak_pdf">
+                                 <button id="sample_editable_1_new"  class="btn btn-danger">Export PDF</button></a>
+                                 <br>
 <br>
+
                          
                                 <table class="table table-striped table-bordered" id="table2">
                                     <thead>
                                     <tr>
                                         <th style="width: 20px;"></th>
                                         <th>No</th>
-                                        <th>Nik</th>
+                                        <th>Nis</th>
                                         <th>Nama</th>
                                         <th>Kelas</th>
                                         <th>Jenis Kelamin</th>

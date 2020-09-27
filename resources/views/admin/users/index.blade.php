@@ -64,14 +64,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                         @php
-    $total = 0; 
-    @endphp
+                       @php $i=1 @endphp
                     @foreach ($users as $user)
                         <tr>
-                            <td> @php
-        $total++;
-        @endphp</td>
+                             <td>{{ $i++ }}</td>
                             <td>{!! $user->name !!}</td>
                             <td>{!! $user->email !!}</td>
                             <td>{!! $user->status !!}</td>
