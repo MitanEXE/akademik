@@ -70,15 +70,15 @@
                                         </thead>
                                         <tbody>
                                         
-
+                                            @php $i=1 @endphp
                                             @foreach ($blok as $list)
                                                 @if ($loop->index % 2 )
                                                     <tr role="row" class="even">
                                                 @else 
                                                     <tr role="row" class="odd">
                                                 @endif
-                                                
-                                                <td class="sorting_1">{!! $list->id_blok !!}</td>
+                                                <td class="sorting_1">{{ $i++ }}</td>
+                                                <!-- <td class="sorting_1">{!! $list->id_blok !!}</td> -->
                                                 <td>{!! $list->blok !!}</td>
                                                 <td>
                                                     <a class="edit" href="javascript:;">Ubah</a>

@@ -23,7 +23,9 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
+ public function AuthRouteAPI(Request $request){
+    return $request->user();
+ }
 
     public function index()
     {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request as UserRequest;
 use App\Semester;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use App\Exports\SemesterExport;
 use Excel;
 use Notifiable, HasRoleAndPermission;
 
@@ -52,6 +53,10 @@ class SemesterController extends Controller
         $editsemester->save();
 
         echo "work";
+    }
+public function export_excel()
+    {
+        return Excel::download(new SemesterExport, 'Semester.xlsx');
     }
 
     public function cetak()

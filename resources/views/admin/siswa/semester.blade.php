@@ -43,6 +43,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <button id="sample_editable_1_new"  class="btn btn-primary"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+                                    <button>
+                                 <a href="/semester/export_excel" class="btn btn-success" target="_blank">Export Excel</button></a>
                                 </div>
                                 <div class="col-md-6 form-inline justify-content-end">
                                     <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable; 
 use Illuminate\Foundation\Auth\User as Authenticatable; 
 use Ultraware\Roles\Traits\HasRoleAndPermission;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Kelas;
+use App\Exports\KelasExport;
 
 class Kelas extends Model
 {

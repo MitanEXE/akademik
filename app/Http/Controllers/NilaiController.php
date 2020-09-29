@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request as UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use App\Exports\NilaiExport;
 use App\Kelas;
 use App\Rombel;
 use App\User;
+use PDF;
 use App\Nilai;
+use Excel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -26,7 +29,53 @@ class NilaiController extends Controller
         $iduser = Auth::id();
         return View('admin.siswa.lihatnilai', compact('iduser'));
     }
+    public function export_excel()
+    {
+        $siswa = DB::table('users')
+                            ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
+                            ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
+                            ->where('users.job', '=', 'siswa')
+                            ->select('id','username', 'name', 'nama_kelas', 'gender')
+                            ->get();
+        return Excel::download(new NilaiExport,''. time(). '-Nilai.xlsx');
+    }
 
+    public function cetak_pdf()
+    {
+        // Grab all the kelas
+        $nilai = DB::table('users')
+                            ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
+                            ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
+                            ->leftjoin('nilai','nilai.user_id','=','users.id')
+                            ->leftjoin('jurusan','jurusan.id_jurusan','=','rombel.id_jurusan')
+                             ->leftjoin('mapel','mapel.kode_mapel','=','nilai.kode_mapel')
+                            ->where('users.job', '=', 'siswa')
+                            // ->select('id','username', 'name', 'nama_kelas', 'gender')
+                            ->get();
+
+        // $siswa = User::where('job','siswa')->get();
+       $pdf = PDF::loadview('print.pdf.nilai',['nilai'=>$nilai]);
+       return $pdf->download(''. time(). '-Laporan-Nilai.pdf');
+    // return View('print.windows.nilai', compact('nilai'));
+    }
+    public function print_windows()
+    {
+        // Grab all the kelas
+        $nilai = DB::table('users')
+                            ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
+                            ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
+                            ->leftjoin('nilai','nilai.user_id','=','users.id')
+                            ->leftjoin('jurusan','jurusan.id_jurusan','=','rombel.id_jurusan')
+                             ->leftjoin('mapel','mapel.kode_mapel','=','nilai.kode_mapel')
+                            ->where('users.job', '=', 'siswa')
+                            // ->select('id','username', 'name', 'nama_kelas', 'gender')
+                            ->get();
+
+        // $siswa = User::where('job','siswa')->get();
+       // $pdf = PDF::loadview('print.pdf.nilai',['nilai'=>$nilai]);
+       // return $pdf->download(''. time(). '-Laporan-Nilai.pdf');
+      return View('print.windows.nilai', compact('nilai'));
+    }
     public function siswawithnilai()
     {
         // Grab all the kelas
@@ -34,7 +83,7 @@ class NilaiController extends Controller
                             ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
                             ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
                             ->where('users.job', '=', 'siswa')
-                            ->select('id','username', 'name', 'nama_kelas', 'gender')
+                            ->select('id','username', 'name', 'nama_kelas','kode_kelas', 'gender')
                             ->get();
 
         // $siswa = User::where('job','siswa')->get();

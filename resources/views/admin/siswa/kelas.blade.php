@@ -43,10 +43,16 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <button id="sample_editable_1_new"  class="btn btn-primary"><i class="fa fa-pencil"></i> Add New @yield('title')</button>
+                                <button>
+                                 <a href="/kelas/export_excel" class="btn btn-success" target="_blank">Export Excel</button></a>
+                                   <a href="/kelas/cetak_pdf" class="btn btn-danger" target="_blank">Export PDF</button></a>
                                 </div>
                                 <div class="col-md-6 form-inline justify-content-end">
-                                    <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option"></select>
-                                    <input class="form-control" id="search" placeholder="Search" type="text">
+                                    <select class="form-control mb-1 mr-sm-1 mb-sm-0" id="search-option">
+                                  <option></option>
+                                 
+
+                                  </select>
                                 </div>
                             </div>
                             <br>
@@ -74,7 +80,7 @@
                                         </thead>
                                         <tbody>
                                         
-
+                                            @php $i=1 @endphp
                                             @foreach ($kelas as $list)
                                                 @if ($loop->index % 2 )
                                                     <tr role="row" class="even">
@@ -82,7 +88,7 @@
                                                     <tr role="row" class="odd">
                                                 @endif
                                                 
-                                                <td class="sorting_1">{!! $list->id_kelas !!}</td>
+                                                <td>{{ $i++ }}</td>
                                                 <td>{!! $list->nama_kelas !!}</td>
                                                 <td>{!! $list->kode_kelas !!}</td>
                                                 <td>

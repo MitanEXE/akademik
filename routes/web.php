@@ -17,9 +17,16 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/kelas/export_excel', 'KelasController@export_excel');
+Route::get('/semester/export_excel', 'SemesterController@export_excel');
+Route::get('/nilai/export_excel', 'NilaiController@export_excel');
+Route::get('/nilai/cetak_pdf', 'NilaiController@cetak_pdf');
+Route::get('/nilai/print', 'NilaiController@print_windows');
+Route::get('/kelas/cetak_pdf', 'KelasController@cetak_pdf');
 
 Route::group(array('prefix' => 'get'), function () {
     Route::get('listkelas', array('as' => 'getlistkelas', function(App\Kelas $kelas){

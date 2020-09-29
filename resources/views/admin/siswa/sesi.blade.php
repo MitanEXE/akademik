@@ -68,7 +68,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
+                                        @php $i=1 @endphp
 
                                             @foreach ($sesi as $list)
                                                 @if ($loop->index % 2 )
@@ -76,8 +76,8 @@
                                                 @else 
                                                     <tr role="row" class="odd">
                                                 @endif
-                                                
-                                                <td class="sorting_1">{!! $list->id_sesi !!}</td>
+                                                <td class="sorting_1">{{ $i++ }}</td>
+                                                <!-- <td class="sorting_1">{!! $list->id_sesi !!} --><!-- </td> -->
                                                 <td>{!! $list->sesi !!}</td>
                                                 <td>
                                                     <a class="edit" href="javascript:;">Ubah</a>
