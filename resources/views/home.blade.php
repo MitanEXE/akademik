@@ -53,7 +53,7 @@
                             @php
                             $kelas = DB::table('kelas')->count();
                             @endphp
-                            <span class="timer" data-from="0" data-to="{{ $kelas }}">{{ $kelas }}</span> 
+                            <span class="timer" data-from="0" data-to="{{ $kelas }}">{{ $kelas }}</span>
                         </div>
                         <div class="card-subtitle">CLASS</div>
                     </div>
@@ -91,62 +91,50 @@
     </div>
     <div class="panel">
         <div class="row">
-            <div class="col-md-8 sm-max">
-                <div class="content-header">
-                    <i class="fa fa-signal"></i>
-                    <div class="content-header-title">Line Chart</div>
-                </div>
-                <div class="content-box">
-                    <div class="content-box-header">
-                        <div class="header-menu active">Visitors</div>
-                        <div class="header-menu">Comments (134)</div>
-                        <select class="select-rounded pull-right">
-                            <option>Today</option>
-                            <option>7 Days</option>
-                            <option>14 Days</option>
-                            <option>Last Month</option>
-                        </select>
-                    </div>
-                    <div class="line-chart-wrapper">
-                        <div class="line-chart-label">LAST VISITORS</div>
-                        <div class="line-chart-value">
-                            <span class="timer" data-from="0" data-to="12501">12,501</span>
-                        </div>
-                        <canvas id="line-chart"></canvas>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-4">
                 <div class="content-header">
                     <i class="fa fa-newspaper-o"></i>
                     <div class="content-header-title">Donut Chart</div>
                 </div>
+                @php
+                $a = DB::select("select count(gender) as gender from users where gender = 'laki-laki'", [1]);
+                $b = DB::select("select count(gender) as gender from users where gender = 'perempuan'", [1]);
+                @endphp
                 <div class="content-box">
                     <div class="donut-chart-wrapper">
-                        <canvas width="120" height="120" id="donut-chart"></canvas>
-                        <div class="donut-chart-label">
-                            <div class="donut-chart-value">330</div>
-                            <div class="donut-chart-title">Total Visitor</div>
-                        </div>
+                        <canvas width="120" height="120" id="myChart"></canvas>
                     </div>
-                    <div class="donut-chart-legend">
-                        <div class="legend-list">
-                            <div class="legend-bullet green"></div>
-                            <div class="legend-title">Australia</div>
-                        </div>
-                        <div class="legend-list">
-                            <div class="legend-bullet red"></div>
-                            <div class="legend-title">Nigeria</div>
-                        </div>
-                        <div class="legend-list">
-                            <div class="legend-bullet yellow"></div>
-                            <div class="legend-title">United States</div>
-                        </div>
-                        <div class="legend-list">
-                            <div class="legend-bullet blue"></div>
-                            <div class="legend-title">Japan</div>
-                        </div>
-                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['Laki-laki','Perempuan'],
+                                    datasets: [{
+                                        label: '# of Votes',
+                                        data: [<?= $a[0]->gender;?>,<?= $b[0]->gender;?>],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 0
+                                    }]
+                                },
+                            });
+                    </script>
                 </div>
             </div>
         </div>
