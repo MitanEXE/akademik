@@ -76,7 +76,7 @@ Pilih Kelas Siswa
 
                                             <td> {!! $siswa->username !!} <input hidden type="text" id="idsiswa" name="idsiswa[]" value="{!! $siswa->id !!}" ></input></td>
                                             <td> {!! $siswa->name !!}</td>
-                                            <td> {!! $siswa->nama_kelas !!}</td>
+                                            <td> {!! $siswa->nama_jurusan !!}-{!! $siswa->kode_kelas !!}</td>
                                             <td> <input type="number" id="daftarnilai" name="daftarnilai[]"> </input></td>
                                             
                                             </tr>

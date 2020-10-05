@@ -33,6 +33,13 @@ Route::group(array('prefix' => 'get'), function () {
         return $kelas->listkelas();
     }));
 });
+
+Route::group(array('prefix' => 'get'), function () {
+    Route::get('listjurusan', array('as' => 'getlistjurusan', function(App\Jurusan $jurusan){
+        return $jurusan->listjurusan();
+    }));
+});
+
 Route::get('infopublik', 'InfoController@cekinfopublik')->name('infopublik');
 
 
@@ -52,6 +59,8 @@ Route::group(array('prefix' => 'akademik'), function () {
         Route::put('update/{iduser}', 'UserController@updateprofile')->name('updateprofile');
         Route::get('{userId}', array('as' => 'users.show', 'uses' => 'UserController@show'));
         Route::get('{userId}', array('as' => 'users.show2', 'uses' => 'UserController@show'));
+        Route::get('data/{userId}', array('as' => 'users.akademik', 'uses' => 'UserController@akademik'));
+        Route::get('sekolah/{userId}', array('as' => 'users.dataakademik', 'uses' => 'UserController@dataakademik'));
     });
 
 
@@ -99,8 +108,9 @@ Route::group(array('prefix' => 'akademik'), function () {
     Route::group(array('prefix' => 'absen'), function () {
         Route::get('/', array('as' => 'absen', 'uses' => 'AbsensiController@index'));
          Route::get('/coba', array('as' => 'coba', 'uses' => 'AbsensiController@coba'));
+         Route::get('/cek', array('as' => 'cek', 'uses' => 'AbsensiController@absenkelas2'));
         Route::post('absenkelas', array('as' => 'absenkelas', 'uses' => 'AbsensiController@absenkelas'));
-        Route::post('doabsen', array('as' => 'doabsen', 'uses' => 'AbsensiController@doabsen'));
+        Route::POST('doabsen', array('as' => 'doabsen', 'uses' => 'AbsensiController@doabsen'));
 
 
     });

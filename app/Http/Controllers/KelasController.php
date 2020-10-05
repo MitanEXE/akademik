@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use App\Exports\KelasExport;
 use Excel;
-use Notifiable, HasRoleAndPermission;
+use App\rombel;
+use App\Mapel;
+use App\Sesi;
+use App\Semester;
+use App\Tahunajaran;
+use App\Blok;
+use App\Jurusan;
+use App\Jadwal;
 
 class KelasController extends Controller
 {
@@ -87,8 +94,7 @@ public function export_excel()
     {
         return Excel::download(new KelasExport, 'Kelas.xlsx');
     }
-
-    public function searchkelas($jeniskelas){
+public function searchkelas($jeniskelas){
         switch ($jeniskelas) {
             case 1:
                 $search = "X";
@@ -100,10 +106,10 @@ public function export_excel()
                 $search = "XII";
                 break;
             case 4:
-                $search = "SMP";
+                $search = "PBK";
                 break;
             case 5:
-                $search = "SD";
+                $search = "PRW";
                 break;
         }
 
@@ -111,4 +117,27 @@ public function export_excel()
 
         return $hasilsearch;
     }
+    // public function searchkelas($jeniskelas){
+    //     switch ($jeniskelas) {
+    //         case 1:
+    //             $search = "X";
+    //             break;            
+    //         case 2:
+    //             $search = "XI";
+    //             break;
+    //         case 3:
+    //             $search = "XII";
+    //             break;
+    //         case 4:
+    //             $search = "SMP";
+    //             break;
+    //         case 5:
+    //             $search = "SD";
+    //             break;
+    //     }
+
+    //     $hasilsearch = Kelas::where('kode_kelas', $search)->orWhere('kode_kelas', 'like', '%' . $search . '%')->get();
+
+    //     return $hasilsearch;
+    // }
 }

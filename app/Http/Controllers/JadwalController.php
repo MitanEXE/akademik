@@ -45,6 +45,7 @@ class JadwalController extends Controller
         $addjadwal->id_tahun     = $request->input('tahunajaran');
         $addjadwal->blok_id     = $request->input('blok');
         $addjadwal->rombel_id     = $request->input('kelas');
+        $addjadwal->jurusan_id     = $request->input('jurusan');
         $addjadwal->save();     
 
         return Redirect::route('jadwal')->with('status', 'Jadwal Berhasil ditambah');
@@ -70,10 +71,12 @@ class JadwalController extends Controller
                 ->leftJoin('semester', 'jadwal.semester_id', '=', 'semester.id_semester')
                 ->leftJoin('tahunajaran', 'jadwal.id_tahun', '=', 'tahunajaran.id_tahun')
                 ->leftJoin('blok', 'jadwal.blok_id', '=', 'blok.id_blok')
-                ->leftJoin('rombel', 'jadwal.rombel_id', '=', 'rombel.user_id')
+                // ->leftJoin('rombel', 'jadwal.rombel_id', '=', 'rombel.user_id')
+                ->leftJoin('rombel', 'jadwal.rombel_id', '=', 'rombel.id_jurusan')
                 // ->leftJoin('rombel', 'jadwal.jurusan_id', '=', 'rombel.id_jurusan')
                 ->select('sesi.sesi', 'tahunajaran.tahun_ajaran', 'semester.semester', 'mapel.nama_mapel', 'jadwal.rombel_id') //, 'jadwal.rombel_id'
                 ->where('rombel.user_id', '=', $search[0]->user_id)
+
                 ->get(),
 
             //Mencari Nama Guru
@@ -82,6 +85,7 @@ class JadwalController extends Controller
                 ->leftJoin('users', 'mapel.id_guru', '=', 'users.id')
                 ->select('users.name')
                 ->where('jadwal.rombel_id', '=', $a[0]->rombel_id)
+
                 ->get(),
 
             //Mencari Kelas dan Jurusan
@@ -90,6 +94,7 @@ class JadwalController extends Controller
                 // ->leftJoin('jadwal', 'rombel.id_jurusan', '=', 'jadwal.jurusan_id')
                 ->leftJoin('jurusan', 'rombel.id_jurusan', '=', 'jurusan.id_jurusan')
                 ->select('jurusan.nama_jurusan', 'kelas.kode_kelas')
+                
                 ->where('rombel.user_id', '=', $search[0]->user_id)
                 ->limit(1)
                 ->get()
@@ -170,6 +175,7 @@ class JadwalController extends Controller
             $listsemester = $semester->pluck('semester','id_semester');
             $listtahunajaran = $tahunajaran->pluck('tahunajaran','id_tahun');
             $listblok = $blok->pluck('blok','id_blok');
+
 
             // dd($listkelas);
 

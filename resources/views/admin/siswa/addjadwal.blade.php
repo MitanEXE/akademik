@@ -119,7 +119,17 @@
                                     </div>
                                 </div>
                             
-
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                             <label for="txtStatus" class="control-label">Jurusan : </label>
+                                    <select id="jurusan" name="jurusan" class="form-control">
+                                        
+                                        @foreach ($listjurusan as $listjurusan)
+                                        <option value="{{ $listjurusan->id_jurusan }}">{{ $listjurusan->nama_jurusan }}</option>
+                                         @endforeach 
+                                     </select>
+                                    </div>
+                                </div>
                             <div class="col-md-12">
                                     <div class="form-group">
                              <label for="txtStatus" class="control-label">Kelas : </label>
@@ -131,6 +141,8 @@
                                      </select>
                                     </div>
                                 </div>
+                           
+                             
                             </div>
                                                   
         

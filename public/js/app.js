@@ -311,7 +311,7 @@ $(function () {
 	if ($('#donut-chart').length) {
 		var donutChart = $("#donut-chart");
 		var data = {
-			labels: ["Red", "Yellow", "Green", "Blue"],
+			labels: ["Laki", "Yellow", "Green", "Blue"],
 			datasets: [{
 				data: [80, 120, 80, 50],
 				backgroundColor: ["#ff4141", "#FBC02D", "#71c21a", "#5797fc"],
@@ -341,7 +341,7 @@ $(function () {
 		var lineData = {
 			labels: ["10", "20", "30", "40", "50", "60", "70"],
 			datasets: [{
-				label: "Visitors Graph",
+				label: "Jenis Kelamin",
 				fill: false,
 				lineTension: 0,
 				backgroundColor: "#fff",
@@ -359,7 +359,7 @@ $(function () {
 				pointHoverBorderWidth: 3,
 				pointRadius: 6,
 				pointHitRadius: 10,
-				data: [5, 32, 5, 42, 50, 59, 11],
+				data: [20, 32, 5, 42, 50, 59, 11],
 				spanGaps: false
 			}]
 		};
