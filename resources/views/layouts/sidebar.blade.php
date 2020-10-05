@@ -20,65 +20,33 @@
                         <!-- Print submenu -->
                        
                           <li><a href="{{ route('users.show2',Auth::user()->id)}}">Profile Saya</a></li>
-
-                        @if (Auth::user()->job =="Admin" && "Guru")
+                          @if (Auth::user()->job =="Admin" && "Guru")
                         <li><a href="{{ route('users') }}">List User</a></li>
-                        @endif
-                        @if (Auth::user()->job =="Siswa" && "Guru")
-                        <li><a href="{{ route('users.akademik',Auth::user()->id)}}">Orang Tua / Wali</a></li>
-                         <li><a href="{{ route('users.dataakademik',Auth::user()->id)}}">Akademik</a></li>
-                        @endif
-                    </ul>
-                </li>
-                @if (Auth::user()->job =="Admin" && "Admin")
-                <li class="">
-                    <a href="#">
-                        <i class="fa fa-vcard"></i>
-                        <span>Data Siswa</span>
-                    </a>
-                    <ul>                        
-                        <li><a href="{{ route('listsiswa') }}">Daftar Siswa</a></li>
-                        <li><a href="{{ URL::to('akademik/kelas') }}">Daftar Kelas</a></li>
                         
+                      @endif
+                        <!-- End of Print submenu -->
                     </ul>
                 </li>
-                @endif
-
-                @if (Auth::user()->job =="Guru" && "Guru")
-                <li class="">
-                    <a href="#">
-                        <i class="fa fa-vcard"></i>
-                        <span>Data Siswa</span>
-                    </a>
-                    <ul>                        
-                        <li><a href="{{ route('listsiswa') }}">Daftar Siswa</a></li>
-                        <li><a href="{{ URL::to('akademik/kelas') }}">Daftar Kelas</a></li>
-                        
-                    </ul>
-                </li>
-                @endif
-
                 @if (Auth::user()->job =="Admin" && "Guru")
-                 <li class="">
+                <li class="">
                     <a href="#">
-                        <i class="fa fa-folder">
+                        <i class="fa fa-vcard">
                             <!-- fa fa-icon --></i>
-                        <span>Data Nilai</span>
+                        <span>Data Siswa</span>
                     </a>
-
                     <ul>
-                        <li><a href="{{ route('tambahnilaikelas') }}">Nilai Kilat</a></li>
-                        <li><a href="{{ URL::to('akademik/nilai') }}">Nilai Siswa</a></li>
-                        <li><a href="{{ URL::to('akademik/absen') }}">Absensi</a></li>
                         <!-- Print submenu -->
-                        <li><a href="{{ URL::to('akademik/mapel') }}">Mata Pelajaran</a></li>
+                        
+                        <li><a href="{{ route('listsiswa') }}">Daftar Siswa</a></li>
+                        <li><a href="{{ URL::to('akademik/kelas') }}">Daftar Kelas</a></li>
                         
                     
+                        
+                        <!-- End of Print submenu -->
                     </ul>
                 </li>
                 @endif
-
-                @if (Auth::user()->job =="Guru" && "Guru")
+                @if (Auth::user()->job =="Admin" && "Guru")
                  <li class="">
                     <a href="#">
                         <i class="fa fa-folder">
@@ -91,11 +59,12 @@
                         <li><a href="{{ URL::to('akademik/mapel') }}">Mata Pelajaran</a></li>
                         <li><a href="{{ URL::to('akademik/nilai') }}">Nilai Siswa</a></li>
                     <li><a href="{{ route('tambahnilaikelas') }}">All Nilai</a></li>
+                  
+
+                        <!-- End of Print submenu -->
                     </ul>
                 </li>
                 @endif
-
-
                  @if (Auth::user()->job =="Admin" && "Guru")
                  <li class="">
                     <a href="#">
@@ -111,28 +80,14 @@
                         <li><a href="{{ URL::to('akademik/semester') }}">Semester</a></li>
                         <li><a href="{{ URL::to('akademik/tahunajaran') }}">Tahun Ajaran</a></li>
                         <li><a href="{{ URL::to('akademik/jurusan') }}">Jurusan</a></li>
+                       
+                  
+
+                        <!-- End of Print submenu -->
                     </ul>
                 </li>
                 @endif
-                @if (Auth::user()->job =="Guru" && "Guru")
-                 <li class="">
-                    <a href="#">
-                        <i class="fa fa-database">
-                            <!-- fa fa-icon --></i>
-                        <span>Data Akademik</span>
-                    </a>
-
-                    <ul>
-                         <li><a href="{{ URL::to('akademik/blok') }}">Blok</a></li>
-                        <li><a href="{{ URL::to('akademik/sesi') }}">Sesi</a></li>
-                        <!-- Print submenu -->
-                        <li><a href="{{ URL::to('akademik/semester') }}">Semester</a></li>
-                        <li><a href="{{ URL::to('akademik/tahunajaran') }}">Tahun Ajaran</a></li>
-                        <li><a href="{{ URL::to('akademik/jurusan') }}">Jurusan</a></li>
-                    </ul>
-                </li>
-                @endif
-
+            
                 @if (Auth::user()->job =="Siswa" && "Orang Tua")
                  <li class="">
                     <a href="">
@@ -161,21 +116,6 @@
                 </a>
                 <a href="{{ URL::to('akademik/jurusan/add') }}">
                     Tambah Jadwal
-                </a>
-            </li>
-                  @endif
-</ul>
-                  @if (Auth::user()->job =="Siswa" && "Siswa")
-                 <li class="">
-                    <a href="">
-                        <i class="fa fa-rocket">
-                            <!-- fa fa-icon --></i>
-                        <span>Jadwal</span>
-                    </a>
-
-                    <ul><li {!! (Request::is('home/nilai') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ route('jadwal') }}">
-                    Lihat jadwal
                 </a>
             </li>
                   @endif

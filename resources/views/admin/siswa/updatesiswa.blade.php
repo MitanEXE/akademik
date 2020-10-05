@@ -2,7 +2,7 @@
 @extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
-    Update Siswa
+    Tambah Siswa
     @parent
 @stop
 
@@ -22,7 +22,7 @@
 
     <section class="content-header">
         <!--section starts-->
-        <h1>Update Siswa</h1>
+        <h1>Tambah Siswa</h1>
     </section>
     <!--section ends-->
     <section class="content">
@@ -83,7 +83,7 @@
                                  <select id="kelas" name="kelas" class="form-control" >
                                         
                                         @foreach ($listkelas as $listkelas)
-                                            <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->kode_kelas }}</option>
+                                            <option value="{{ $listkelas->id_kelas }}">{{ $listkelas->nama_kelas }}</option>
                                          @endforeach 
                                      </select>    
                                     </div>

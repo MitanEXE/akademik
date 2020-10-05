@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Ultraware\Roles\Traits\HasRoleAndPermission;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Kelas;
-use App\Jurusan;
 use App\Exports\KelasExport;
 
 class Kelas extends Model
@@ -27,9 +26,5 @@ class Kelas extends Model
     public function listkelas()
     {
     	return Kelas::all();
-    }
-    public function listjurusan()
-    {
-        return Jurusan::all();
     }
 }

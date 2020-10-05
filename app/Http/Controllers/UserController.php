@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request as UserRequest;
 use App\User;
-use App\Rombel;
-use App\Jurusan;
 use App\data_pengguna;
 use App\Role;
-use App\Kelas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Http\UploadedFile;
@@ -38,94 +35,8 @@ class UserController extends Controller
         // Show the page
         return View('admin.users.index', compact('users', 'iduser'));
     }
-    public function akademik($id)
-    {
-        try {
-            $iduser = Auth::id();
-            // Get the user information
-             $user = User::find($id);
-            // $user = DB::table('users')
-            //                 ->leftjoin('data_pengguna','data_pengguna.id', '=', 'users.data_pengguna_id')
-            //                 ->where('users.id', '=', $id)
-            //                 ->select('users.id','username', 'name', 'gender', 'email', 'picture', 'created_at', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'nama_ortu_wali', 'no_hp_ortu')
-            //                 ->get();
-
-            $datapengguna = User::find($id)->datapengguna;
-
-        } catch (UserNotFoundException $e) {
-            // Prepare the error message
-            $error = Lang::get('users/message.user_not_found', compact('id'));
-
-            // Redirect to the user management page
-            return Redirect::route('admin.users.index')->with('error', $error);
-        }
-
-    
-        // dd($user);
-        // Show the page
-        return View('admin.users.dataakademik', compact('user','iduser', 'datapengguna'));
-
-    }
-        public function dataakademik($id)
-    {
-    // ->where('rombel.user_id', '=', $search[0]->user_id)
-        $search = DB::select('select user_id from rombel where user_id  =' . $id . ' limit 1');
-        $data = [
-            // Mencari Jurusan yang sesuai di Rombel, dan mengambil data Jadwal sesuai rombel
-            $a = DB::table('rombel')
-               
-                ->select('rombel.rombel_id','rombel.tahun','rombel.tanggal') 
-                ->where('rombel.user_id', '=', $search[0]->user_id)
-                ->get(),
-
-            //Mencari Nama Guru
-            $b = DB::table('users') 
-                ->select('users.name','users.status')
-                ->where('users.id', '=',$search[0]->user_id)
-                ->get(),
-
-            //Mencari Kelas dan Jurusan
-            $c = DB::table('rombel')
-                ->leftJoin('kelas', 'rombel.id_kelas', '=', 'kelas.id_kelas')
-                // ->leftJoin('jadwal', 'rombel.id_jurusan', '=', 'jadwal.jurusan_id')
-                ->leftJoin('jurusan', 'rombel.id_jurusan', '=', 'jurusan.id_jurusan')
-                ->select('jurusan.nama_jurusan','jurusan.kode', 'kelas.kode_kelas')
-                ->where('rombel.user_id', '=', $search[0]->user_id)
-                ->limit(1)
-                ->get()
-        ];
-        return View('admin.users.dataakademiksiswa', compact('data'));
-    }
-public function dataakademik2($id)
-    {
-        try {
-           $iduser = Auth::id();
-            // Get the user information
-             $user = User::find($id);
-            // $user = DB::table('users')
-            //                 ->leftjoin('data_pengguna','data_pengguna.id', '=', 'users.data_pengguna_id')
-            //                 ->where('users.id', '=', $id)
-            //                 ->select('users.id','username', 'name', 'gender', 'email', 'picture', 'created_at', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'nama_ortu_wali', 'no_hp_ortu')
-            //                 ->get();
-
-            $datapengguna = User::find($id)->datapengguna;
 
 
-          
-        } catch (UserNotFoundException $e) {
-            // Prepare the error message
-            $error = Lang::get('users/message.user_not_found', compact('id'));
-
-            // Redirect to the user management page
-            return Redirect::route('admin.users.index')->with('error', $error);
-        }
-
-    
-        // dd($user);
-        // Show the page
-        return View('admin.users.dataakademiksiswa', compact('user','iduser','datapengguna'));
-
-    }
 
 
     public function show($id)

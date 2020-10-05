@@ -29,7 +29,7 @@ class MapelController extends Controller
         return View('admin.siswa.datanilai', compact('mapel', 'iduser'));
     }
 
-        public function create(UserRequest $request)
+    public function create(UserRequest $request)
     {
 
 

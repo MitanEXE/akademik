@@ -72,7 +72,9 @@ Daftar Mata Pelajaran
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="">Kode</th>
-                                                
+                                                <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                 Full Name
+                                            : activate to sort column ascending" style="width: 300px;">Nama Mata Pelajaran</th>
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Full Name
                                             : activate to sort column ascending" style="width: 300px;">Nama Mata Pelajaran</th>
@@ -96,7 +98,7 @@ Daftar Mata Pelajaran
                                                 
                                                 <td class="sorting_1">{!! $mapel->kode_mapel !!}</td>
                                                 <td>{!! $mapel->nama_mapel !!}</td>
-                                               
+                                                <td>{!! $mapel->nama_mapel !!}</td>
                                                 <td>
                                                     <a class="edit" href="javascript:;" style="width: 20px;">Ubah</a>
                                                 </td>

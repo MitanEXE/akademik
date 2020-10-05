@@ -23,7 +23,7 @@ View User Details
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        
+        <h1>User Profile</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('dashboard') }}">
@@ -53,11 +53,15 @@ View User Details
                             User Profile</a>
                     </li>
                     <li>
-                        <a href="#tab2" data-toggle="tab">
+                        <a href="#tab8" data-toggle="tab">
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
                             Change Password</a>
                     </li>
-                   
+                    <li>
+                        <a href="#tab4" data-toggle="tab">
+                            <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                            Orang Tua/Wali</a>
+                    </li>
 
                 </ul>
                 <div  class="tab-content mar-top">
@@ -265,9 +269,88 @@ View User Details
                             </div>
                         </div>
                     </div>
-                   
+                    <div id="tab4" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12 pd-top">
+                                <form class="form-horizontal">
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            <label for="inputpassword" class="col-md-3 control-label">
+                                                Nama Ayah
+                                                <span class='require'>*</span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                    <input type="text" id="user" 
+                                                           class="form-control" value="{{ $datapengguna->nama_ortu_wali }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputnumber" class="col-md-3 control-label">
+                                                Nama Ibu
+                                                <span class='require'>*</span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                    <input type="text" id="password-confirm" value="{{ $datapengguna->nama_ibu }}"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputnumber" class="col-md-3 control-label">
+                                                Kode Pos
+                                                <span class='require'>*</span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                    <input type="text" id="password-confirm" value="{{ $datapengguna->kode_pos }}"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputnumber" class="col-md-3 control-label">
+                                                Alamat
+                                                <span class='require'>*</span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                    <input type="text" id="password-confirm" value="{{ $datapengguna->alamat_ortu }}"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputnumber" class="col-md-3 control-label">
+                                                No Hp
+                                                <span class='require'>*</span>
+                                            </label>
+                                            <div class="col-md-9">
+                                                <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
+                                                            </span>
+                                                    <input type="text" id="password-confirm" value="0{{ $datapengguna->no_hp_ortu }}"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                
-<div id="tab2" class="tab-pane fade">
                         <div class="row">
                             <div class="col-md-12 pd-top">
                                 <form class="form-horizontal">
@@ -303,6 +386,10 @@ View User Details
                                             </div>
                                         </div>
                                     </div>
+
+
+                        
+                                    
                                     <div class="form-actions">
                                         <div class="col-md-offset-3 col-md-9">
                                             <button type="submit" class="btn btn-primary" id="change-password">Submit

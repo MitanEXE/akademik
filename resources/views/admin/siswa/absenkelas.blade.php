@@ -17,7 +17,6 @@ Absensi
 @section('content')
 
 <section class="content-header">
-    {!! csrf_field() !!}
                 <!--section starts-->
                 <h1>{!! $tglsekarang !!}</h1>
                 <ol class="breadcrumb">
@@ -39,7 +38,7 @@ Absensi
                             <div class="portlet-title">
                                 <div class="caption">
                                     <i class="livicon" data-name="calendar" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                         Absensi Kelas {!! $kelas !!}
+                                    Absensi Kelas {!! $kelas !!}
                                 </div>
                             </div>
                             <div class="portlet-body" >
@@ -81,7 +80,6 @@ Absensi
 
                                             </tbody>
                                         </table>
-
                                         <div style="text-align: right;">
                                         <button type="submit" role="button" class="btn btn-default" >Simpan</button>
                                         </form>

@@ -73,6 +73,65 @@ Pilih Kelas Siswa
 @section('footer_scripts')
     
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" ></script>
-     <script src="{{ asset('assets/js/absensi.js') }}" ></script>
-  
+    <script type="text/javascript">
+      function getkelas() {
+      var ProgramKeahlian = document.getElementById("ProgramKeahlian").value;
+      var pilihan = null;
+      switch(ProgramKeahlian) {
+        case "Rekayasa Perangkat Lunak (RPL)":
+        pilihan = "1";
+        break;
+        case "Accounting (ACC)" : 
+        pilihan = "2";
+        break;
+        case "Marketing (MKT)" : 
+        pilihan = "3";
+        break;
+        case "Sekolah Menengah Pertama (SMP)" : 
+        pilihan = "4";
+        break;
+        case "Sekolah Dasar (SD)" : 
+        pilihan = "5";
+        break;
+      }
+
+      // clear daftar
+      var listkelas = document.getElementById("listkelas");
+      while (listkelas.firstChild) {
+          listkelas.removeChild(listkelas.firstChild);
+      }
+
+
+      $.ajax({
+        url:'../akademik/kelas/listkelas/' + pilihan,
+        type:'GET',
+        dataType: 'json',
+        success: function( json ) {
+          $.each(json, function(i, value) {
+            $('#listkelas')
+            .append($('<option selected>' + value["nama_kelas"] + '</option>')
+              .attr('value', value["id_kelas"]));
+          });
+        }
+      });
+
+      var mapel = document.getElementById("mapel");
+      while (mapel.firstChild) {
+          mapel.removeChild(mapel.firstChild);
+      }
+      
+      $.ajax({
+        url:'../mapel/listkodemapel/',
+        type:'GET',
+        dataType: 'json',
+        success: function( json ) {
+          $.each(json, function(i, value) {
+            $('#mapel')
+            .append($('<option >' + value["kode_mapel"] + ' - ' + value["nama_mapel"] + '</option>')
+              .attr('value', value["kode_mapel"]));
+          });
+        }
+      });
+    }
+    </script>    
 @stop
