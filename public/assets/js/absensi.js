@@ -3,20 +3,20 @@ function getkelas() {
   var pilihan = null;
   switch(ProgramKeahlian) {
     case "Rekayasa Perangkat Lunak (RPL)":
-    pilihan = "1";
-    break;
-    case "Adaministrasi Perkantoran (AP)" : 
-    pilihan = "2";
-    break;
-    case "Akuntansi (AK)" : 
-    pilihan = "3";
-    break;
-    case "Perbankan (PBK)" : 
-    pilihan = "4";
-    break;
-    case "Perawatan Kesahatan (PRW)" : 
-    pilihan = "5";
-    break;
+        pilihan = "1";
+        break;
+        case "Accounting (ACC)" : 
+        pilihan = "2";
+        break;
+        case "Marketing (MKT)" : 
+        pilihan = "3";
+        break;
+        case "Sekolah Menengah Pertama (SMP)" : 
+        pilihan = "4";
+        break;
+        case "Sekolah Dasar (SD)" : 
+        pilihan = "5";
+        break;
   }
 
   // clear daftar
@@ -27,14 +27,14 @@ function getkelas() {
 
 
   $.ajax({
-    url:'../home/kelas/listkelas/' + pilihan,
+    url:'../akademik/kelas/listkelas/' + pilihan,
     type:'GET',
     dataType: 'json',
     success: function( json ) {
       $.each(json, function(i, value) {
         $('#listkelas')
-        .append($('<option selected>' + value["nama_kelas"] + '</option>')
-          .attr('value', value["nama_kelas"]));
+        .append($('<option selected>' + value["kode_kelas"] + '</option>')
+          .attr('value', value["kode_kelas"]));
       });
     }
   });

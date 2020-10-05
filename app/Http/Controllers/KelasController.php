@@ -21,7 +21,7 @@ use App\Jadwal;
 class KelasController extends Controller
 {
     //
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -45,7 +45,7 @@ class KelasController extends Controller
     }
     public function delete($id_kelas) 
     {
-    	Kelas::where('id_kelas', $id_kelas)->delete();
+        Kelas::where('id_kelas', $id_kelas)->delete();
     }
 
     public function create(UserRequest $request)

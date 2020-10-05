@@ -7,7 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use App\Exports\NilaiExport;
 use App\Kelas;
-use App\Rombel;
+use App\rombel;
+use App\Mapel;
+use App\Sesi;
+use App\Semester;
+use App\Tahunajaran;
+use App\Blok;
+use App\Jurusan;
+use App\Jadwal;
 use App\User;
 use PDF;
 use App\Nilai;
@@ -42,7 +49,7 @@ class NilaiController extends Controller
 
     public function cetak_pdf()
     {
-        // Grab all the kelas
+       
         $nilai = DB::table('users')
                             ->leftjoin('rombel','rombel.user_id', '=', 'users.id')
                             ->leftjoin('kelas','kelas.id_kelas','=','rombel.id_kelas')
@@ -139,10 +146,19 @@ class NilaiController extends Controller
     public function tambahnilaipilihkelas()
     {
         $iduser = Auth::id();
-        $listkelas = DB::table('kelas')->select('id_kelas','kode_kelas')->get();
+        $listkelas = DB::table('kelas')->select('id_kelas','kode_kelas','nama_kelas')->get();
         return view('admin.siswa.tambahnilai', compact('iduser', 'listkelas'));
     }
 
+        public function percobaan( )
+    {
+
+        $tambahkelas = new Kelas;
+        $tambahkelas->nama_kelas = $request->get('namakelas');
+        $tambahkelas->save();
+
+        echo "work";
+    }
     public function goinputnilaikelas(UserRequest $request)
     {
         $iduser = Auth::id();
@@ -152,7 +168,8 @@ class NilaiController extends Controller
         $listsiswa = DB::table('rombel')->where('rombel.id_kelas', '=', $idkelas)
                                         ->join('users', 'rombel.user_id', '=', 'users.id')
                                         ->join('kelas', 'rombel.id_kelas', '=', 'kelas.id_kelas')
-                                        ->select('users.id','username','name','gender', 'nama_kelas')
+                                        ->join('jurusan', 'rombel.id_jurusan', '=', 'jurusan.id_jurusan')
+                                        ->select('users.id','username','name','gender', 'nama_kelas','kode_kelas','nama_jurusan')
                                         ->get();
         return view('admin.siswa.inputnilai', compact('iduser','listsiswa','kodemapel'));
 
