@@ -1,4 +1,4 @@
- jQuery(document).ready(function()
+jQuery(document).ready(function()
     {
         function restoreRow(oTable, nRow) {
             var aData = oTable.fnGetData(nRow);

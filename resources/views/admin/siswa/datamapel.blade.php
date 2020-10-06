@@ -2,9 +2,10 @@
 @extends('layouts.appc')
 {{-- Page title --}}
 @section('title')
-Daftar Mata Pelajaran
-@parent
+    Kelola Pemimbing Mapel
+    @parent
 @stop
+
 
 {{-- page level styles --}}
 @section('header_styles')
@@ -20,7 +21,7 @@ Daftar Mata Pelajaran
 @section('content')
 
 <section class="content-header">
-    <ol class="breadcrumb">
+
        <div class="breadcrumb">
     <a href="{{ route('home') }}">Home</a>
     <a href="{{ Route::currentRouteName() }}">@yield('title')</a>
@@ -29,63 +30,41 @@ Daftar Mata Pelajaran
     </ol>
 </section>
             <!-- Main content -->
-          
-                         <section class="datagrid-panel">
+            <section class="datagrid-panel">
     <div class="content">
         <div class="panel">
             <div class="content-header no-mg-top">
                 <i class="fa fa-newspaper-o"></i>
                 <div class="content-header-title">@yield('title')</div>
             </div>
-            <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                       
-                            <div class="portlet-body">
-                                <div class="table-toolbar">
-                                    <div class="btn-group">
-                                     
-                                         <button id="sample_editable_1_new" class="btn btn-primary"><i class="fa fa-pencil" id="sample_editable_1_new"></i> Add New @yield('title')</button>
-                                    </div>
-                                    <div class="btn-group pull-right">
-                                        <button class="btn dropdown-toggle btn-custom" data-toggle="dropdown">
-                                            Alat
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                <a href="#">Cetak</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Save as PDF</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Export ke Excel</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content-box">
+                        <div class="content-box-header">
+                            <div class="row">
+
                                 <div id="sample_editable_1_wrapper" class="">
                                     <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="">Kode</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" style="">Kode Mapel</th>
+                                                <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                 Full Name
+                                            : activate to sort column ascending" style="width: 300px;">Nama Mapel</th>
+                                                <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                                 Gender
+                                            : activate to sort column ascending" style="width: 20px;">Pemimbing</th>
+     
                                                 
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
-                                                 Nama Mata Pelajaran
-                                            : activate to sort column ascending" style="width: 300px;">Nama Mata Pelajaran</th>
-                                                <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Edit
-                                            : activate to sort column ascending" style="width: 20px;">Ubah</th>
+                                            : activate to sort column ascending" style="width: 20px;"></th>
                                                 <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
                                                  Delete
-                                            : activate to sort column ascending" style="width: 20px;">Hapus</th>
+                                            : activate to sort column ascending" style="width: 20px;">-</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        
 
                                             @foreach ($mapel as $mapel)
                                                 @if ($loop->index % 2 )
@@ -96,9 +75,10 @@ Daftar Mata Pelajaran
                                                 
                                                 <td class="sorting_1">{!! $mapel->kode_mapel !!}</td>
                                                 <td>{!! $mapel->nama_mapel !!}</td>
-                                               
-                                                <td>
-                                                    <a class="edit" href="javascript:;" style="width: 20px;">Ubah</a>
+                                                <td>{!! $mapel->name !!}</td>
+                                              
+                                               <td>
+                                                    <a href="{{route('updatemapel', $mapel->id_mapel )}}" style="width: 20px;">Ubah</a>
                                                 </td>
                                                 <td>
                                                     <a class="delete" href="javascript:;" style="width: 20px;">Hapus</a>
@@ -132,5 +112,5 @@ Daftar Mata Pelajaran
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/select2/js/select2.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/js/pages/table_mapel.js') }}" ></script>
+  
 @stop

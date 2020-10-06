@@ -90,6 +90,9 @@ Route::group(array('prefix' => 'akademik'), function () {
         Route::post('editmapel', array('as' => 'editmapel', 'uses' => 'MapelController@edit'));
         Route::get('delete/{nikmapel}', array('as' => 'deletemapel', 'uses' => 'MapelController@delete'));
         Route::get('listkodemapel', array('as' => 'listkodemapel', 'uses' => 'MapelController@listkodemapel'));
+         Route::get('data', array('as' => 'data', 'uses' => 'MapelController@datamapel'));
+         Route::get('updatemapel/{id}', array('as' => 'updatemapel', 'uses' => 'MapelController@updatemapel'));
+         Route::post('editdatamapel', array('as' => 'editdatamapel', 'uses' => 'MapelController@editmapel'));
     });
 
     Route::group(array('prefix' => 'nilai'), function () {
