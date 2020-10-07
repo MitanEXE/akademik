@@ -70,6 +70,7 @@
                         <li><a href="{{ route('tambahnilaikelas') }}">Nilai Kilat</a></li>
                         <li><a href="{{ URL::to('akademik/nilai') }}">Nilai Siswa</a></li>
                         <li><a href="{{ URL::to('akademik/absen') }}">Absensi</a></li>
+                        <li><a href="{{ URL::to('post') }}">Absensi Beta</a></li>
                         <!-- Print submenu -->
                         <li><a href="{{ URL::to('akademik/mapel') }}">Mata Pelajaran</a></li>
                         
@@ -146,6 +147,7 @@
                     Lihat Nilai
                 </a>
             </li>
+            <li><a href="{{ URL::to('post') }}">Absensi Beta</a></li>
                   @endif
             @if (Auth::user()->job =="Admin" && "Siswa")
                  <li class="">

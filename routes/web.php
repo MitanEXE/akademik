@@ -20,6 +20,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/post', 'PostController@index');
+Route::get('/post2/{userId}', 'PostController@bagi');
+Route::get('/post/{slug}', 'PostController@show');
+Route::post('/comment', 'PostController@comment');
+
+
+Route::get('add-to-log', 'HomeController@myTestAddToLog');
+Route::get('logActivity', 'HomeController@logActivity');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/kelas/export_excel', 'KelasController@export_excel');
 Route::get('/semester/export_excel', 'SemesterController@export_excel');
