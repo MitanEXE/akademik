@@ -22,10 +22,10 @@ Developed as a collaborative team project during my time in SMK Permata Harapan 
 - Collaborated with team members using Git for version control
 
 ## Screenshots
-![Login Page](Screenshot 2026-05-26 104335.png)
-![Dashboard Page](Screenshot 2026-05-26 105354.png)
-![profile Page](Screenshot 2026-05-26 105407.png)
-![Data View](Screenshot 2026-05-26 105524.png)
+![Login Page](login.png)
+![Dashboard Page](dashboard.png)
+![profile Page](profile.png)
+![Data View](view.png)
 
 ## Setup (Local)
 1. Clone: `git clone https://github.com/MitanEXE/akademik.git`
