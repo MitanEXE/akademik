@@ -38,5 +38,5 @@ Developed as a collaborative team project during my time in SMK Permata Harapan 
 9. Serve: `php artisan serve`
 
 ## Notes
-This project was developed in 2024 as part of an academic assignment. 
+This project was developed in 2020 as part of an academic assignment. 
 The codebase reflects my understanding of MVC architecture, Routing, and relational database design at that stage of my studies.
