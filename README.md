@@ -28,7 +28,7 @@ Developed as a collaborative team project during my time in SMK Permata Harapan 
 1. Clone: `git clone https://github.com/MitanEXE/akademik.git`
 2. Install: `composer install`
 3. Configure `.env` with your database credentials
-4. Run migrations: `php artisan migrate`
+4. Import SQL File: `sistem.sql`
 5. Serve: `php artisan serve`
 
 ## Notes
