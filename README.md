@@ -17,7 +17,7 @@ Developed as a collaborative team project during my time in SMK Permata Harapan 
 
 ## My Role
 - Designed and implemented the database schema (ERD → MySQL)
-- Built the backend API routes and controllers for student/course modules
+- Built the backend routes and controllers for student/course modules
 - Integrated frontend templates with Blade engine
 - Collaborated with team members using Git for version control
 
@@ -29,10 +29,13 @@ Developed as a collaborative team project during my time in SMK Permata Harapan 
 
 ## Setup (Local)
 1. Clone: `git clone https://github.com/MitanEXE/akademik.git`
-2. Install: `composer install`
-3. Configure `.env` with your database credentials
-4. Import SQL File: `sistem.sql`
-5. Serve: `php artisan serve`
+2. Downgrade PHP to 7.4
+3. Install: `composer install`
+4. Install : `composer require barryvdh/laravel-dompdf` and `composer update consoletvs/charts`
+5. Configure `.env` with your database credentials
+6. Import SQL File: `sistem.sql`
+7. Run: `php artisan key:generate`, `php artisan migrate`
+9. Serve: `php artisan serve`
 
 ## Notes
 This project was developed in 2024 as part of an academic assignment. 
