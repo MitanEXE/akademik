@@ -1,7 +1,7 @@
 # Akademik - Academic Management System
 
 A web-based academic/student management system built with **Laravel 6**, **PHP**, **MySQL**, and **Bootstrap**. 
-Developed as a collaborative team project during my Computer Science studies at National Quemoy University.
+Developed as a collaborative team project during my time in SMK Permata Harapan Batam (Vocational High School in Batam, Indonesia)
 
 ## Features
 - Student enrollment and profile management
